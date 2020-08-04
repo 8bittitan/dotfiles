@@ -1,0 +1,71 @@
+{
+  "window.zoomLevel": 0,
+  "editor.fontSize": 16,
+  "editor.fontFamily": "Victor Mono, Monaco, 'Courier New', monospace",
+  "editor.fontWeight": "500",
+  "editor.fontLigatures": true,
+  "editor.letterSpacing": 1.05,
+  "editor.tabSize": 2,
+  "workbench.colorTheme": "SynthWave '84",
+  "workbench.iconTheme": "file-icons",
+  "terminal.external.osxExec": "Hyper.app",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true
+  },
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "javascript.format.enable": false,
+  "workbench.startupEditor": "none",
+  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+  "editor.renderLineHighlight": "gutter",
+  "explorer.confirmDragAndDrop": false,
+  "editor.formatOnPaste": true,
+  "eslint.packageManager": "npm",
+  "workbench.activityBar.visible": true,
+  "editor.formatOnType": true,
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+  "breadcrumbs.enabled": false,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "*.html.erb": "html"
+  },
+  "terminal.integrated.rendererType": "dom",
+  "vsicons.dontShowNewVersionMessage": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[handlebars]": {
+    "editor.formatOnSave": false
+  },
+  "[erb]": {
+    "editor.formatOnSave": false
+  },
+  "solargraph.useBundler": true
+}
+
