@@ -1,60 +1,69 @@
 ## Apps
 
-[Chrome](https://www.google.com/chrome/)
+[Brave](https://brave.com/)
 
 [VS Code](https://code.visualstudio.com/)
 
-[Postman](https://www.postman.com/)
+[Insomnia](https://insomnia.rest/)
 
 [MongoDB Compass](https://www.mongodb.com/products/compass)
 
-[Postgres](https://postgresapp.com/)
+[DBngin](https://dbngin.com/)
 
 [Figma](https://www.figma.com/)
 
-[Hyper](https://hyper.is/)
+[iterm2](https://iterm2.com/)
 
 [Spotify](https://www.spotify.com/is/download/mac/)
 
 [Notion](https://www.notion.so/)
 
-[GraphQL Playground](https://github.com/prisma-labs/graphql-playground)
+[Fig](https://fig.sh/)
+
+[Raycast](https://www.raycast.com/)
+
+[Rectangle](https://rectangleapp.com/)
+
+[TablePlus](https://tableplus.com/)
 
 ## Extensions
 
-- Apollo GraphQL
+Extensions should be synced by logging in with GitHub. But just incase, here is a list of some:
+
 - Auto Close Tag
 - Auto Rename Tag
 - AutoFileName
 - Babel ES6/ES7
 - Babelrc
+- Bearded Icons
+- Bearded Theme Monokai Reversed
 - Better Comments
 - Bracket Pair Colorizer
 - Cypress Snippets
-- Docker
 - DotENV
-- Dracula Official
 - EditorConfig for VS Code
 - ES7 React/Redux/GraphQL/React-Native snippets
 - ESLint
+- Fig
 - file-icons
 - Formatting Toggle
 - GitHub Actions
+- GitHub Copilot
 - GitLens
-- HTML Snippets
+- Go
+- IntelliCode
 - language-postcss
-- language-stylus
-- NGINX Configuration
-- Nunjucks
+- Laravel Blade formatter
+- Laravel Extra Intellisense
+- laravel-blade
+- PHP Debug
+- PHP Intelephense
 - Prettier
+- Prisma
 - Python
-- Rails Snippets
-- React Apollo Snippets
-- Ruby
-- Ruby Solargraph
-- Rust
 - Sass
-- SynthWave '84
+- Svelte for VS Code
+- Tailwind CSS IntelliSense
 - Visual Studio IntelliCode
 - VSCode Ruby
 - vscode-styled-components
@@ -73,6 +82,6 @@
 
 [YARN](https://yarnpkg.com/)
 
-## MongoDB
+## ZSH
 
-[MONGO](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
+[OHMYZSH](https://ohmyz.sh/)

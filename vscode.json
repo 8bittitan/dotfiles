@@ -1,71 +1,102 @@
 {
-  "window.zoomLevel": 0,
-  "editor.fontSize": 16,
+  "editor.inlineSuggest.enabled": true,
+  "editor.formatOnPaste": true,
+  "svelte.enable-ts-plugin": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.fontFamily": "Victor Mono, Monaco, 'Courier New', monospace",
-  "editor.fontWeight": "500",
-  "editor.fontLigatures": true,
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "workbench.startupEditor": "none",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
   "editor.letterSpacing": 1.05,
-  "editor.tabSize": 2,
-  "workbench.colorTheme": "SynthWave '84",
-  "workbench.iconTheme": "file-icons",
-  "terminal.external.osxExec": "Hyper.app",
+  "editor.formatOnType": true,
+  "window.zoomLevel": 1,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "emmet.includeLanguages": {
+    "njk": "html",
+    "javascript": "javascriptreact"
+  },
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true
   },
-  "workbench.editor.enablePreview": false,
-  "workbench.editor.enablePreviewFromQuickOpen": false,
-  "editor.minimap.enabled": false,
-  "editor.formatOnSave": true,
-  "javascript.format.enable": false,
-  "workbench.startupEditor": "none",
-  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
-  "editor.renderLineHighlight": "gutter",
-  "explorer.confirmDragAndDrop": false,
-  "editor.formatOnPaste": true,
-  "eslint.packageManager": "npm",
-  "workbench.activityBar.visible": true,
-  "editor.formatOnType": true,
-  "gitlens.advanced.messages": {
-    "suppressShowKeyBindingsNotice": true
-  },
-  "breadcrumbs.enabled": false,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "files.associations": {
-    "*.html.erb": "html"
-  },
-  "terminal.integrated.rendererType": "dom",
-  "vsicons.dontShowNewVersionMessage": true,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
-  },
+  "workbench.iconTheme": "bearded-icons",
   "[handlebars]": {
     "editor.formatOnSave": false
   },
+  "eslint.packageManager": "npm",
+  "go.toolsManagement.autoUpdate": true,
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.suggestSelection": "first",
+  "workbench.colorTheme": "Bearded Theme Monokai Reversed",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "breadcrumbs.enabled": false,
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "terminal.integrated.rendererType": "dom",
+  "workbench.preferredDarkColorTheme": "Dracula",
+  "editor.tabSize": 2,
+  "javascript.format.enable": false,
+  "python.pythonPath": "/usr/bin/python3",
+  "editor.accessibilitySupport": "off",
+  "security.workspace.trust.untrustedFiles": "open",
+  "rust-client.rustupPath": "/Users/pauljankowski/.cargo/bin/rustup",
   "[erb]": {
     "editor.formatOnSave": false
   },
-  "solargraph.useBundler": true
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.fontSize": 17,
+  "workbench.editor.enablePreview": false,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.fontWeight": "500",
+  "editor.linkedEditing": true,
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "javascript.inlayHints.enumMemberValues.enabled": true,
+  "editor.minimap.enabled": false,
+  "solargraph.useBundler": true,
+  "github.copilot.enable": {
+    "markdown": false,
+    "*": true,
+    "plaintext": false,
+    "yaml": true
+  },
+  "editor.fontLigatures": true,
+  "explorer.confirmDragAndDrop": false,
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+  "editor.formatOnSave": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.renderLineHighlight": "gutter",
+  "explorer.confirmDelete": false,
+  "files.associations": {
+    "*.html.erb": "html"
+  },
+  "terminal.external.osxExec": "iTerm.app",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
-
