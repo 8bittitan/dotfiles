@@ -31,6 +31,9 @@
 !.config/zsh/
 !.config/zsh/**/*
 
+!assets/
+!assets/**/*
+
 !bin/
 !bin/**/*
 
