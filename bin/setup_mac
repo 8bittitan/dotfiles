@@ -1,0 +1,30 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+if [ ! -d "$HOME/.local/bin"]; then
+  mkdir -p "$HOME/.local/bin"
+fi
+
+# Install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install ohmyzsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install mise
+if [ ! -d "$HOME/.local/bin/mise"]; then
+  curl https://mise.jdx.dev/install.sh | sh
+fi
+"$HOME/.local/bin/mise" activate -s zsh
+
+# Install brew packages
+brew bundle
+
+bat cache --build
+
+$(brew --prefix)/opt/fzf/install
+
+# Install TPM and tmux plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+~/.tmux/plugins/tpm/bin/install_plugins

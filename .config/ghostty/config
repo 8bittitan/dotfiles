@@ -1,0 +1,37 @@
+#shell-integration = zsh
+shell-integration-features = no-cursor
+
+theme = catppuccin-macchiato
+background = black 
+background-opacity = 0.75
+background-blur-radius = 20
+
+font-family = JetBrainsMonoNL Nerd Font Mono
+font-size = 18
+cursor-style = underline
+#cursor-invert-fg-bg = true
+
+macos-titlebar-style = hidden
+macos-option-as-alt = true
+mouse-hide-while-typing = true
+
+confirm-close-surface = false
+window-decoration = true
+window-padding-x = 15
+window-padding-y = 15
+window-padding-balance = true
+
+auto-update = check
+auto-update-channel = stable
+
+copy-on-select = clipboard
+
+# Keybinds
+keybind = super+i=inspector:toggle
+keybind = super+b>,=toggle_quick_terminal
+
+keybind = super+b>r=reload_config
+
+keybind = super+b>\=new_split:right
+keybind = super+b>-=new_split:down
+keybind = super+b>e=equalize_splits

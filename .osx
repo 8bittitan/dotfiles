@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+osascript -e 'tell application "System Preferences" to quit'
+
+sudo -v
+
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# defaults write com.apple.universalaccess reduceTransparency -bool true
+
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+
+defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
+
+defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
+
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+defaults write com.apple.screensaver askForPassword -int 0
+defaults write com.apple.screensaver askForPasswordDelay -int 3
+
+defaults write com.apple.screencapture location -string "${HOME}/Desktop/screenshots"
+
+defaults write com.apple.screencapture type -string "png"
+
+defaults write NSGlobalDomain AppleFontSmoothing -int 1
+
+defaults write com.apple.finder NewWindowTarget -string "PfDe"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+	General -bool true \
+	OpenWith -bool true \
+	Privileges -bool true
+
+defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
+
+echo "Done. Note that some of these changes require a logout/restart to take effect."

@@ -1,0 +1,33 @@
+[tools]
+direnv = 'latest'
+node = '22'
+golang = '1.23.1'
+ruby = '3.3.4'
+zig = "0.14.0"
+rust = 'latest'
+lua = "latest"
+bun = "1.2.13"
+
+[settings]
+legacy_version_file = true
+plugin_autoupdate_last_check_duration = '1 week'
+trusted_config_paths = [
+  '~/.config',
+  '~/projects/'
+]
+
+verbose = false
+asdf_compat = true
+jobs = 4
+raw = false
+yes = false
+
+not_found_auto_install = true
+task_output = 'prefix'
+paranoid = false
+
+disable_default_shorthands = false
+env_file = '.env'
+experimental = true
+status = {missing_tools = 'always', show_env = false, show_tools = false}
+idiomatic_version_file_enable_tools = ["node"]

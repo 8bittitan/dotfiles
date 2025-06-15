@@ -1,0 +1,36 @@
+# vim: ft=zsh
+
+zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle ':completion:*' max-errors 2
+zstyle ':completion:*' prompt '%e'
+zstyle :compinstall filename '"$HOME"/.config/zsh/.zshrc'
+
+zstyle ':completion:*' rehash true
+
+zstyle ':completion:*:*:*:*:*' menu yes select
+
+zstyle ':completion:*' list-dirs-first true
+
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*' group-name ''
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+zstyle ':completion:*:git-checkout:*' sort false
+
+zstyle ':completion:*:descriptions' format '[%d]'
+
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+zstyle ':fzf-tab:complete:cd:*' fzf-preview "eza -1 --color=always $realpath"
+
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
+zstyle ':fzf-tab:complete:nvim:*' fzf-min-height 90
+zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $realpath'
+zstyle ':fzf-tab:complete:vim:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $realpath'
+
+zstyle ':fzf-tab:complete:bat:*' fzf-min-height 90
+zstyle ':fzf-tab:complete:bat:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $realpath'
+
+zstyle ':omz:update' frequency 7

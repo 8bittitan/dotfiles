@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+set -euxo pipefail
+
+lsof -n -i:"$1" | grep LISTEN
