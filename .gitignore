@@ -16,6 +16,11 @@
 !.config/ghostty/
 !.config/ghostty/**/*
 
+!.config/k9s/
+!.config/k9s/config.yaml
+!.config/k9s/skins/
+!.config/k9s/skins/nightfox.yaml
+
 !.config/mise/
 !.config/mise/**/*
 

@@ -8,12 +8,10 @@ return {
 
     conform.setup({
       formatters = {
-        biome = {
-          require_cwd = true,
-        },
-        ['biome-organize-imports'] = {
-          require_cwd = true,
-        },
+        -- TODO: Renable once Conform has better support for v2
+        -- biome = {
+        --   require_cwd = true,
+        -- },
         zig = {
           command = 'zig',
           args = { 'fmt', '--stdin' },
@@ -21,10 +19,10 @@ return {
       },
       formatters_by_ft = {
         lua = { 'stylua' },
-        javascript = { 'biome', 'biome-organize-imports', 'prettier' },
-        typescript = { 'biome', 'biome-organize-imports', 'prettier' },
-        javascriptreact = { 'biome', 'biome-organize-imports', 'prettier' },
-        typescriptreact = { 'biome', 'biome-organize-imports', 'prettier' },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescriptreact = { 'prettier' },
         ruby = { 'rubocop', timeout_ms = 1500 },
         go = { 'gofmt', 'goimports' },
         zig = { 'zig' },

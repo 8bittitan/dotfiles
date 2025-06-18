@@ -151,6 +151,29 @@ return {
   biome = function()
     lspconfig.biome.setup({
       on_attach = function(client, bufnr)
+        -- NOTE: Not ideal, but works for now until Conform has better support for biome@v2
+        vim.api.nvim_create_autocmd('BufWritePre', {
+          buffer = bufnr,
+          callback = function()
+            -- HACK: Override notify for now
+            local orignal = vim.notify
+
+            ---@diagnostic disable-next-line: duplicate-set-field
+            vim.notify = function(msg, level, opts)
+              if msg == 'No code actions available' then
+                return
+              end
+              orignal(msg, level, opts)
+            end
+
+            vim.lsp.buf.code_action({
+              ---@diagnostic disable-next-line: assign-type-mismatch, missing-fields
+              context = { only = { 'source.fixAll.biome' } },
+              apply = true,
+            })
+          end,
+        })
+
         config.on_attach(client, bufnr)
       end,
       capabilities = config.capabilities,
