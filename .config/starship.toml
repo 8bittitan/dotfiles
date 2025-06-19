@@ -1,0 +1,160 @@
+command_timeout = 1000
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Prompt
+format = """
+$directory\
+$git_branch\
+$git_status\
+$line_break\
+$character"""
+
+right_format = """$all"""
+
+# Themes
+palette = "nightfox"
+
+[palettes.nightfox]
+black = "#393b44"
+blue = "#719cd6"
+cyan = "#63cdcf"
+green = "#81b29a"
+purple = "#9d79d6"
+red = "#c94f6d"
+white = "#dfdfe0"
+yellow = "#dbc074"
+bright_black = "#575860"
+bright_blue = "#86abdc"
+bright_cyan = "#7ad5d6"
+bright_green = "#8ebaa4"
+bright_purple = "#baa1e2"
+bright_red = "#d16983"
+bright_white = "#e4e4e5"
+bright_yellow = "#e0c989"
+
+[directory]
+style = "cyan"
+format = "[$path]($style)"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+format = "[ $symbol $branch ]($style)"
+style = "bright_purple"
+
+[git_status]
+format = "[($all_status$ahead_behind )]($style)"
+style = "bright_purple"
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:bright_green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[](bold fg:green)'
+vimcmd_replace_one_symbol = '[](bold fg:purple)'
+vimcmd_replace_symbol = '[](bold fg:purple)'
+vimcmd_visual_symbol = '[](bold fg:yellow)'
+
+[docker_context]
+disabled = true
+symbol = " "
+format = '[ $symbol( $context) ]($style)'
+
+[elixir]
+symbol = " "
+
+[golang]
+symbol = ""
+format = '[ $symbol( $version) ]($style)'
+detect_files = ["go.mod"]
+
+[lua]
+symbol = " "
+
+[nodejs]
+symbol = ""
+format = '[ $symbol( $version) ]($style)'
+
+[bun]
+symbol = ""
+format = "[ $symbol( $version) ]($style)"
+style = "bright_yellow"
+
+[os.symbols]
+Alpaquita = ""
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = ""
+Artix = ""
+CentOS = ""
+Debian = ""
+DragonFly = ""
+Emscripten = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Garuda = "󰛓"
+Gentoo = ""
+HardenedBSD = "󰞌"
+Illumos = "󰈸"
+Linux = ""
+Mabox = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+MidnightBSD = ""
+Mint = ""
+NetBSD = ""
+NixOS = ""
+OpenBSD = "󰈺"
+openSUSE = ""
+OracleLinux = "󰌷"
+Pop = ""
+Raspbian = ""
+Redhat = ""
+RedHatEnterprise = ""
+Redox = "󰀘"
+Solus = "󰠳"
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Windows = "󰍲"
+
+[os]
+disabled = true
+
+[php]
+symbol = " "
+format = '[ $symbol( $version) ]($style)'
+style = "bright_purple"
+
+
+[ruby]
+symbol = ""
+format = '[ $symbol( $version) ]($style)'
+style = "bright_red"
+
+[rust]
+symbol = " "
+
+[zig]
+symbol = ""
+format = '[ $symbol( $version) ]($style)'
+style = "yellow"
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[line_break]
+disabled = false 
+

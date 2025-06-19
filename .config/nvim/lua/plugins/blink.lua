@@ -7,7 +7,7 @@ return {
   },
   {
     'saghen/blink.cmp',
-    dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+    dependencies = { 'rafamadriz/friendly-snippets' },
     version = '1.*',
     event = 'VimEnter',
     --- @module 'blink.cmp'
@@ -27,7 +27,6 @@ return {
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
-      snippets = { preset = 'luasnip' },
       signature = { enabled = true },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },

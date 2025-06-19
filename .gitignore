@@ -36,6 +36,8 @@
 !.config/zsh/
 !.config/zsh/**/*
 
+!.config/starship.toml
+
 !assets/
 !assets/**/*
 

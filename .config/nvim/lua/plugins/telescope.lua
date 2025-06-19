@@ -69,14 +69,14 @@ return {
           'sorbet',
           '_client_admin_old',
           '.bundle',
+          '**.terraform/',
+          '**.turbo',
         },
       },
       pickers = {
         find_files = {
           hidden = true,
-        },
-        git_files = {
-          hidden = true,
+          no_ignore = true,
         },
       },
       extensions = {
