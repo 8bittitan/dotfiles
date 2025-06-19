@@ -14,6 +14,7 @@ This repository holds majority of my personal configuration for my MacOS setup. 
 - [eza](https://eza.rocks/) (better `ls`)
 - [bat](https://github.com/sharkdp/bat) (better `cat`)
 - git
+- [yaak](https://yaak.app/) (API Client)
 
 ## Quickstart
 
