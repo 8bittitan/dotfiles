@@ -8,9 +8,11 @@ return {
 
     conform.setup({
       formatters = {
-        -- TODO: Renable once Conform has better support for v2
+        -- TODO: Fix when there is better support for V2
         -- biome = {
         --   require_cwd = true,
+        --   command = 'biome',
+        --   args = { 'check', '--fix', '--assist-enabled=true', '--stdin-file-path=$RELATIVE_FILEPATH$EXTENSION' },
         -- },
         zig = {
           command = 'zig',

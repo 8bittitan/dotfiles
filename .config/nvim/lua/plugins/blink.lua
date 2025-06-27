@@ -7,7 +7,10 @@ return {
   },
   {
     'saghen/blink.cmp',
-    dependencies = { 'rafamadriz/friendly-snippets' },
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+    },
     version = '1.*',
     event = 'VimEnter',
     --- @module 'blink.cmp'
@@ -19,7 +22,13 @@ return {
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
       },
       fuzzy = {
-        implementation = 'lua',
+        implementation = 'prefer_rust_with_warning',
+        sorts = {
+          'exact',
+          'score',
+          'kind',
+          'sort_text',
+        },
       },
       appearance = {
         nerd_font_variant = 'mono',
@@ -30,7 +39,9 @@ return {
       signature = { enabled = true },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+        per_filetype = { sql = { 'snippets', 'dadbod', 'buffer' } },
         providers = {
+          dadbod = { module = 'vim_dadbod_completion.blink' },
           lazydev = {
             module = 'lazydev.integrations.blink',
             score_offset = 100,
