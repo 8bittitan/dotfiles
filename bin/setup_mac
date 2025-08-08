@@ -17,6 +17,10 @@ if [ ! -d "$HOME/.local/bin/mise"]; then
 fi
 "$HOME/.local/bin/mise" activate -s zsh
 
+brew install stow
+
+stow .
+
 # Install brew packages
 brew bundle
 

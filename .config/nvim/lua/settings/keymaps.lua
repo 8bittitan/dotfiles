@@ -93,3 +93,6 @@ wk.add({
   end,
   desc = 'Copy file path to clipboard',
 })
+
+-- Marko
+vim.keymap.set('n', '"', '<cmd>Marko<CR>')

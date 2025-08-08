@@ -22,7 +22,7 @@ return {
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
       },
       fuzzy = {
-        implementation = 'prefer_rust_with_warning',
+        implementation = 'rust',
         sorts = {
           'exact',
           'score',
@@ -34,12 +34,15 @@ return {
         nerd_font_variant = 'mono',
       },
       completion = {
+        accept = {
+          create_undo_point = false,
+        },
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
       signature = { enabled = true },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
-        per_filetype = { sql = { 'snippets', 'dadbod', 'buffer' } },
+        per_filetype = { sql = { 'snippets', 'buffer' } },
         providers = {
           dadbod = { module = 'vim_dadbod_completion.blink' },
           lazydev = {

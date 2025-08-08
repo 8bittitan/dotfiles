@@ -29,6 +29,7 @@ return {
         go = { 'gofmt', 'goimports' },
         zig = { 'zig' },
         json = { 'biome' },
+        php = { 'pint' },
       },
       format_on_save = {
         timeout_ms = 1000,
