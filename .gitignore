@@ -21,6 +21,9 @@
 !.config/k9s/skins/
 !.config/k9s/skins/nightfox.yaml
 
+!.config/lazygit/
+!.config/lazygit/config.yml
+
 !.config/mise/
 !.config/mise/**/*
 

@@ -35,11 +35,6 @@ Run the install script
 ./bin/setup_mac
 ```
 
-After everything is installed, run GNU Stow to create all needed symlinks
-```bash
-stow .
-```
-
 ## Screenshots
 
 Terminal

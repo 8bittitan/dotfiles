@@ -14,6 +14,7 @@ alias ll="l"
 alias lt="eza -TlbhaF --git --icons --group-directories-first --level=2"
 
 # Git
+alias lg='lazygit';
 alias push='git push';
 alias pull='git pull';
 alias gs='git status';

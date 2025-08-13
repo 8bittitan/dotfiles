@@ -1,0 +1,13 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --side-by-side --wrap-max-lines unlimited --paging=never
+    useConfig: false
+  commit:
+    signOff: false
+  merging:
+    manualCommit: false
+    args: ""
+  log:
+    order: "topo-order"
+    showGraph: "when-maximised"
