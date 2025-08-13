@@ -1,24 +1,67 @@
 [push]
+  default = current
+  followTags = true
   autoSetupRemote = true
+
 [user]
   name = Paul Jankowski
   email = 8BitTitan@gmail.com
+  signingkey = ~/.ssh/id_ed25519.pub
+
 [init]
   defaultBranch = main
+
 [core]
   editor = nvim
   pager = delta
+
 [pull]
   ff = only
   default = current
+
 [color]
   ui = auto
+
 [fetch]
   prune = true
+
+[diff]
+  tool = nvimdiff
+  colorMoved = zebra
+  context = 10
+  algorithm = histogram
+
+[difftool "nvimdiff"]
+  cmd = "nvim -c DiffviewOpen"
+
+[difftool]
+  prompt = false
+
 [interactive]
   diffFilter = delta --color-only
+
 [delta]
   navigate = true
   dark = true
+  hyperlinks = true
+  line-numbers = false
+  line-numbers-right-format = "│ "
+  side-by-side = true
+  true-color = always
+
 [merge]
+  tool = nvimmerge
   conflictStyle = zdiff3
+
+[mergetool "nvimmerge"]
+  cmd = "nvim -c DiffviewOpen"
+
+[rebase]
+  autosquash = true
+  autostash = true
+
+[log]
+  date = iso
+
+[blame]
+  date = short

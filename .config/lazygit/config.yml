@@ -1,7 +1,19 @@
+gui:
+  scrollHeight: 2
+  scrollPastBottom: true
+  sidePanelWidth: 0.3333
+  exandFocusedSidePanel: false
+  mainPanelSplitMode: "flexible"
+  commitLength:
+    show: true
+  nerdFontsVersion: "3"
+  showRandomTip: true
+  showCommandLog: true
+  showFileTree: true
 git:
   paging:
     colorArg: always
-    pager: delta --side-by-side --wrap-max-lines unlimited --paging=never
+    pager: delta --dark --true-color always --side-by-side --wrap-max-lines unlimited --paging=never
     useConfig: false
   commit:
     signOff: false
