@@ -155,6 +155,16 @@ disabled = true
 [gcloud]
 disabled = true
 
+[kubernetes]
+symbol = " "
+disabled = false
+detect_files = [ "algoliaweb.code-workspace" ]
+contexts = [
+  { context_pattern = "dashboard-dev", style = "green" },
+  { context_pattern = "dashboard-beta", style = "blue" },
+  { context_pattern = "dashboard-production", style = "bold red" }
+]
+
 [line_break]
 disabled = false 
 
