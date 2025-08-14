@@ -11,7 +11,7 @@ eval "$(mise hook-env)"
 
 plugins=(
   fzf-tab
-  )
+)
 
 [[ -f "$ZSH"/oh-my-zsh.sh ]] && source "$ZSH"/oh-my-zsh.sh
 autoload -U add-zsh-hook
@@ -46,6 +46,13 @@ eval "$(fzf --zsh)"
 
 bindkey -v
 
+export LS_COLORS="$(vivid generate rose-pine-moon)"
+
+# TODO: Add back once removing oh-my-zsh
+# [[ ! -f "$HOME"/fzf-tab/fzf-tab.plugin.zsh ]] && git clone https://github.com/Aloxaf/fzf-tab "$HOME"/fzf-tab
+#
+# source "$HOME"/fzf-tab/fzf-tab.plugin.zsh
+
 # pnpm
 export PNPM_HOME="/Users/pauljankowski/Library/pnpm";
 export PATH="$PNPM_HOME:$PATH";
@@ -54,10 +61,6 @@ export PATH="$PNPM_HOME:$PATH";
 # Install plugins from brew
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Google Cloud
-if [ -f '/Users/pauljankowski/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/pauljankowski/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/Users/pauljankowski/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/pauljankowski/google-cloud-sdk/completion.zsh.inc'; fi
 
 # PHP
 export PATH="$HOME/.composer/vendor/bin:$PATH";
@@ -75,5 +78,6 @@ export HERD_PHP_84_INI_SCAN_DIR="/Users/pauljankowski/Library/Application Suppor
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Keep at end
+eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
 

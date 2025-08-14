@@ -1,15 +1,20 @@
 alias -s {js,json,yaml,html,css,toml}='bat'
+alias -s git='git clone'
+
+alias -g G="| rga --hyperline-format=kitty"
+alias -g C="| wc -l"
 
 # General
+alias cat='bat'
 alias f='fzf | xargs -I{} nvim {}'
-alias fzf='fzf --preview "([[ -f {} ]] && (bat --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200"'
+alias fz="fzf_custom"
 alias c='clear';
 alias ~='cd ~';
 alias zconf='source ~/.zshrc';
 alias v='nvim';
 
 # Eza
-alias l="eza -lbha --icons --group-directories-first --hyperlink --color-scale=size"
+alias l="eza -lbha -o --icons --group-directories-first --hyperlink --color-scale=size"
 alias ll="l"
 alias lt="eza -TlbhaF --git --icons --group-directories-first --level=2"
 
@@ -40,3 +45,7 @@ alias lara='~/.composer/vendor/bin/laravel';
 
 # Docker
 alias dcu="docker compose up"
+
+fzf_custom() {
+  fzf --preview "([[ -f {} ]] && (bat --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200"
+}

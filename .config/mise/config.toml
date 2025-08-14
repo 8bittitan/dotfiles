@@ -1,8 +1,8 @@
 [tools]
 direnv = 'latest'
-node = '22'
+nodejs = { version = '22', postinstall = 'corepack enable' }
 golang = '1.23.1'
-ruby = '3.3.4'
+ruby = '3.4.4'
 zig = "0.14.0"
 rust = 'latest'
 lua = "latest"
@@ -31,4 +31,4 @@ disable_default_shorthands = false
 env_file = '.env'
 experimental = true
 status = {missing_tools = 'always', show_env = false, show_tools = false}
-idiomatic_version_file_enable_tools = ["node"]
+idiomatic_version_file_enable_tools = ["node", "ruby"]

@@ -2,6 +2,9 @@
 
 !.config/
 
+!.config/atuin/
+!.config/atuin/config.toml
+
 !.config/bat/
 !.config/bat/config
 !.config/bat/themes/

@@ -1,36 +1,127 @@
 # vim: ft=zsh
 
+# Cache completions for faster startup
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$HOME/.cache/zsh/.zcompcache"
+
+# Basic completion settings
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' prompt '%e'
-zstyle :compinstall filename '"$HOME"/.config/zsh/.zshrc'
-
+zstyle ':completion:*' verbose yes
 zstyle ':completion:*' rehash true
-
-zstyle ':completion:*:*:*:*:*' menu yes select
-
 zstyle ':completion:*' list-dirs-first true
+zstyle ':completion:*' accept-exact '*(N)'
 
-zstyle ':completion:*:matches' group 'yes'
+# Smart case matching and partial word completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# Grouping and formatting
 zstyle ':completion:*' group-name ''
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-zstyle ':completion:*:git-checkout:*' sort false
-
+zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*:corrections' format '%F{green}-- %d (errors: %e) --%f'
+zstyle ':completion:*:messages' format '%F{purple}-- %d --%f'
+zstyle ':completion:*:warnings' format '%F{red}-- no matches found --%f'
 
+# Colorize completions
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-zstyle ':fzf-tab:complete:cd:*' fzf-preview "eza -1 --color=always $realpath"
+# Menu settings for fzf-tab
+zstyle ':completion:*' menu no
 
+# Git-specific settings
+zstyle ':completion:*:git-checkout:*' sort false
+
+# fzf-tab settings
+zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group ',' '.'
+zstyle ':fzf-tab:*' continuous-trigger 'ctrl-space'
 
-zstyle ':fzf-tab:complete:nvim:*' fzf-min-height 90
-zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $realpath'
-zstyle ':fzf-tab:complete:vim:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $realpath'
+# Disable preview window for command completions
+zstyle ':fzf-tab:complete:-command-:*' fzf-preview ''
+zstyle ':fzf-tab:complete:-command-:*' fzf-flags '--height=15' '--preview-window=hidden'
 
-zstyle ':fzf-tab:complete:bat:*' fzf-min-height 90
-zstyle ':fzf-tab:complete:bat:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $realpath'
+# Also disable for aliases, builtins, etc.
+zstyle ':fzf-tab:complete:(-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview ''
+zstyle ':fzf-tab:complete:(builtin|alias|function):*' fzf-preview ''
 
-zstyle ':omz:update' frequency 7
+# Preview settings for various commands
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always --icons --git $PWD/${(Q)word}'
+zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
+
+# File operations previews
+zstyle ':fzf-tab:complete:(ls|eza|exa|fd|find):*' fzf-preview 'eza -1 --color=always --icons $PWD/${(Q)word}'
+zstyle ':fzf-tab:complete:(rm|mv|cp):*' fzf-preview 'eza -1 --color=always --icons $PWD/${(Q)word}'
+
+# Editor previews
+zstyle ':fzf-tab:complete:(nvim|vim|vi|nano|code):*' fzf-min-height 90
+zstyle ':fzf-tab:complete:(nvim|vim|vi|nano|code):*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $PWD/${(Q)word}'
+
+# Text viewing previews
+zstyle ':fzf-tab:complete:(bat|cat|less|more):*' fzf-min-height 90
+zstyle ':fzf-tab:complete:(bat|cat|less|more):*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $PWD/${(Q)word}'
+
+# Git-specific previews
+zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
+  'git diff --color=always $PWD/${(Q)word} | delta'
+zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
+  'git log --color=always --pretty=medium $PWD/${(Q)word}'
+zstyle ':fzf-tab:complete:git-help:*' fzf-preview \
+  'git help ${(Q)word} | bat -l man --color=always'
+zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
+  'case "$group" in
+    "commit tag") git show --color=always ${(Q)word} ;;
+    *) git show --color=always ${(Q)word} | delta ;;
+  esac'
+zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
+  'case "$group" in
+    "modified file") git diff --color=always $PWD/${(Q)word} | delta ;;
+    "branch") git log --color=always --oneline --graph --decorate ${(Q)word} ;;
+    *) git show --color=always ${(Q)word} | delta ;;
+  esac'
+
+# Man page completion preview
+zstyle ':fzf-tab:complete:man:*' fzf-preview 'man ${(Q)word} | bat -l man --color=always'
+
+# SSH host completion preview
+zstyle ':fzf-tab:complete:ssh:*' fzf-preview 'ping -c1 -t1 ${(Q)word}'
+zstyle ':fzf-tab:complete:scp:*' fzf-preview 'ping -c1 -t1 ${(Q)word}'
+
+# Kubernetes resource previews
+zstyle ':fzf-tab:complete:kubectl:argument-1' fzf-preview \
+  'kubectl api-resources | grep -i ${(Q)word}'
+
+zstyle ':fzf-tab:complete:kubectl:argument-2' fzf-preview \
+  'kubectl get ${words[2]} ${(Q)word} -o wide 2>/dev/null || kubectl get ${words[2]} 2>/dev/null'
+
+zstyle ':fzf-tab:complete:kubectl-(describe|edit|delete):argument-2' fzf-preview \
+  'kubectl get ${words[2]} -o wide 2>/dev/null'
+
+zstyle ':fzf-tab:complete:kubectl-(describe|edit|delete):argument-3' fzf-preview \
+  'kubectl get ${words[2]} ${(Q)word} -o yaml 2>/dev/null | bat -l yaml --color=always'
+
+# Homebrew previews
+zstyle ':fzf-tab:complete:brew-(install|info|remove|search|list):*' fzf-preview \
+  'brew info ${(Q)word}'
+
+# File type specific previews
+zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview \
+  'echo ${(P)word}'
+
+# Archive file previews
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'if [[ -f $PWD/${(Q)word} && ${(Q)word} =~ .(tar|zip|gz|bz2|rar|7z)$ ]]; then 
+  als $PWD/${(Q)word} 2>/dev/null || tar tf $PWD/${(Q)word} 2>/dev/null || unzip -l $PWD/${(Q)word} 2>/dev/null || echo "No preview available for ${(Q)word}"; 
+else 
+  :; 
+fi'
+
+# Colorize groups
+zstyle ':fzf-tab:*' prefix ''
+zstyle ':fzf-tab:*' single-group color header
+
+# Improve fzf-tab appearance
+zstyle ':fzf-tab:*' fzf-pad 4

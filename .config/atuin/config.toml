@@ -1,0 +1,10 @@
+workspaces = true
+
+history_format = "{time} | {host}/{directory} | {command}"
+filter_mode_shell_up_key_binding = "directory"
+inline_height = 40
+keymap_mode = "vim-normal"
+style = "auto"
+
+[theme]
+name = ""

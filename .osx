@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# ~/.osx — https://mths.be/macos
+
 osascript -e 'tell application "System Preferences" to quit'
 
 sudo -v
