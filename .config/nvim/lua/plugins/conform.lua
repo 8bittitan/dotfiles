@@ -14,6 +14,9 @@ return {
         --   command = 'biome',
         --   args = { 'check', '--fix', '--assist-enabled=true', '--stdin-file-path=$RELATIVE_FILEPATH$EXTENSION' },
         -- },
+        biome = {
+          require_cwd = true,
+        },
         zig = {
           command = 'zig',
           args = { 'fmt', '--stdin' },
@@ -35,6 +38,7 @@ return {
         timeout_ms = 1000,
         lsp_format = 'never',
       },
+      notify_no_formatters = false,
     })
 
     vim.keymap.set({ 'n', 'v' }, '<leader>f', function()

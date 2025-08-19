@@ -4,6 +4,7 @@ return {
     'williamboman/mason.nvim',
     { 'williamboman/mason-lspconfig.nvim', version = '1.32.0' },
     'folke/which-key.nvim',
+    'b0o/schemastore.nvim',
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
