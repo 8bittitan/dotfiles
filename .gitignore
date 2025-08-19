@@ -39,6 +39,14 @@
 !.config/wezterm/
 !.config/wezterm/**/*
 
+!.config/yazi/
+!.config/yazi/package.toml
+!.config/yazi/theme.toml
+!.config/yazi/yazi.toml
+!.config/yazi/flavors/
+!.config/yazi/flavors/duskfox.yazi/
+!.config/yazi/flavors/duskfox.yazi/**/*
+
 !.config/zsh/
 !.config/zsh/**/*
 

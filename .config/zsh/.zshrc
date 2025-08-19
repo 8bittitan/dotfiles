@@ -77,6 +77,14 @@ export HERD_PHP_84_INI_SCAN_DIR="/Users/pauljankowski/Library/Application Suppor
 # Disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
 # Keep at end
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
