@@ -43,6 +43,11 @@ return {
           style = 'single',
         },
       },
+      hover = {
+        border = {
+          padding = { 0, 1 },
+        },
+      },
       cmdline_input = {
         border = {
           style = 'single',

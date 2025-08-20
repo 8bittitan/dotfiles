@@ -21,6 +21,11 @@ return {
           DiagnosticError = { bg = 'palette.bg1' },
           DiagnosticWarn = { bg = 'palette.bg1' },
           DiagnosticInfo = { bg = 'palette.bg1' },
+          Pmenu = { bg = 'palette.bg1', fg = 'palette.sel0' },
+          PmenuSel = { bg = 'palette.bg2' },
+          NormalFloat = { bg = 'palette.bg1', fg = 'palette.fg1' },
+          BlinkCmpDoc = { bg = 'palette.bg1', fg = 'palette.fg1' },
+          BlinkCmpDocBorder = { bg = 'palette.bg1', fg = 'palette.sel0' },
         },
       },
     })
