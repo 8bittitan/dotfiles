@@ -28,6 +28,7 @@ alias staging='git checkout staging';
 alias master='git checkout master';
 alias commit='git commit';
 alias co='git checkout';
+alias gd="gh dash";
 
 # Random
 alias myip='curl ip.appspot.com';

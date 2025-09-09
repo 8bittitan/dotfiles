@@ -1,12 +1,13 @@
 [tools]
 direnv = 'latest'
 nodejs = { version = '22', postinstall = 'corepack enable' }
-golang = '1.23.1'
+golang = '1.25'
 ruby = '3.4.4'
-zig = "0.14.0"
+zig = "0.15.1"
 rust = 'latest'
 lua = "latest"
 bun = "1.2.13"
+zls = "0.15.0"
 
 [settings]
 legacy_version_file = true

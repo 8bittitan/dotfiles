@@ -24,7 +24,7 @@ fi
 
 mise install
 
-if [ ! -d "/opt/homebrew/stow" ]; then
+if [ ! -d "/opt/homebrew/bin/stow" ]; then
 	brew install stow
 fi
 
@@ -41,3 +41,11 @@ $(brew --prefix)/opt/fzf/install
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ~/.tmux/plugins/tpm/bin/install_plugins
+
+if [ -d "/opt/homebrew/bin/yazi" ]; then
+  ya pkg install
+fi
+
+if [ -d "/opt/homebrew/bin/gh" ]; then
+  gh extension install dlvhdr/gh-dash
+fi

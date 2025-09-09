@@ -17,10 +17,6 @@ return {
         biome = {
           require_cwd = true,
         },
-        zig = {
-          command = 'zig',
-          args = { 'fmt', '--stdin' },
-        },
       },
       formatters_by_ft = {
         lua = { 'stylua' },
@@ -30,7 +26,6 @@ return {
         typescriptreact = { 'prettier' },
         ruby = { 'rubocop', timeout_ms = 1500 },
         go = { 'gofmt', 'goimports' },
-        zig = { 'zig' },
         json = { 'biome' },
         php = { 'pint' },
       },

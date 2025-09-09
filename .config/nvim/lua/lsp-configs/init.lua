@@ -25,6 +25,18 @@ local config = {
   flags = { debounce_text_changes = 200 },
 }
 
+local function override_lsp_notify()
+  local orignal = vim.notify
+
+  ---@diagnostic disable-next-line: duplicate-set-field
+  vim.notify = function(msg, level, opts)
+    if msg == 'No code actions available' then
+      return
+    end
+    orignal(msg, level, opts)
+  end
+end
+
 return {
   function(server_name)
     lspconfig[server_name].setup(config)
@@ -138,12 +150,21 @@ return {
   end,
   zls = function()
     lspconfig.zls.setup({
-      cmd = { '/usr/local/bin/zls' },
+      root_dir = lspconfig.util.root_pattern('build.zig', '.git'),
       capabilities = config.capabilities,
-      on_attach = config.on_attach,
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd('BufWritePre', {
+          pattern = { '*.zig', '*.zon' },
+          callback = function()
+            vim.lsp.buf.format({ bufnr = bufnr, async = false })
+          end,
+        })
+
+        config.on_attach(client, bufnr)
+      end,
       settings = {
         zls = {
-          build_on_save_alternative_watch = true,
+          semantic_tokens = 'partial',
         },
       },
     })
@@ -156,15 +177,7 @@ return {
           buffer = bufnr,
           callback = function()
             -- HACK: Override notify for now
-            local orignal = vim.notify
-
-            ---@diagnostic disable-next-line: duplicate-set-field
-            vim.notify = function(msg, level, opts)
-              if msg == 'No code actions available' then
-                return
-              end
-              orignal(msg, level, opts)
-            end
+            override_lsp_notify()
 
             vim.lsp.buf.code_action({
               ---@diagnostic disable-next-line: assign-type-mismatch, missing-fields

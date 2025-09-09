@@ -17,6 +17,8 @@ config.audible_bell = "Disabled"
 -- Font settings
 -- config.font = wezterm.font("CommitMono Nerd Font")
 config.font = wezterm.font("BlexMono Nerd Font")
+-- config.font = wezterm.font("Lilex")
+config.harfbuzz_features = { "liga=1", "calt=1", "ss02=1", "ss04=1" }
 config.font_size = 17
 
 -- Appearance
