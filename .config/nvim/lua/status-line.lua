@@ -61,7 +61,7 @@ local modes = setmetatable({
 local function get_mode()
   local mode_info = modes[vim.fn.mode()]
   local mode = mode_info.short
-  return mode_info.hl .. mode .. ' ' .. _spacer(1)
+  return mode_info.hl .. mode .. _spacer(1)
 end
 
 local function get_path()
