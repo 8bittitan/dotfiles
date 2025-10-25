@@ -12,6 +12,7 @@ return {
       local treesitter = require('nvim-treesitter.configs')
 
       treesitter.setup({
+        ignore_install = {},
         ensure_installed = require('utils').parsers,
         auto_install = true,
         sync_install = false,
