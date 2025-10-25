@@ -52,14 +52,6 @@ wk.add({
   },
 })
 
--- FTerm
-wk.add({
-  { '<leader>t', "<cmd>lua require('FTerm').toggle()<CR>", desc = 'Toggle terminal' },
-})
-wk.add({
-  { '<leader>t', "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>", desc = 'Toggle terminal closed', mode = 't' },
-}, { mode = 't' })
-
 -- Neotree
 key('n', '<C-n>', '<cmd>Neotree toggle<CR>', { noremap = false })
 key('n', '<leader>bf', '<cmd>Neotree toggle buffers<CR>', { noremap = false })

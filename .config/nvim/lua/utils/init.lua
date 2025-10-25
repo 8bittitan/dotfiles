@@ -2,6 +2,7 @@ local M = {}
 
 M.servers = {
   'bashls',
+  'biome',
   'cssls',
   'eslint',
   'gopls',
@@ -21,6 +22,7 @@ M.linters = {
   'erb-lint',
   'jsonlint',
   'markdownlint',
+  'oxlint',
   'prettier',
   'rubocop',
   'shellharden',
@@ -94,5 +96,18 @@ M.icons = {
     Variable = ' ',
   },
 }
+
+M.override_lsp_notify = function()
+  local original = vim.notify
+
+  ---@diagnostic disable-next-line: duplicate-set-field
+  vim.notify = function(msg, level, opts)
+    if msg == 'No code actions available' then
+      return
+    end
+
+    original(msg, level, opts)
+  end
+end
 
 return M

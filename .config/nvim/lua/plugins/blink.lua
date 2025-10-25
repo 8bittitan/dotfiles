@@ -9,7 +9,6 @@ return {
     'saghen/blink.cmp',
     dependencies = {
       'rafamadriz/friendly-snippets',
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
     },
     version = '1.*',
     event = 'VimEnter',
@@ -48,7 +47,7 @@ return {
       },
       signature = { enabled = true },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
         per_filetype = { sql = { 'snippets', 'buffer' } },
         providers = {
           lsp = {
@@ -83,12 +82,6 @@ return {
             max_items = 15,
             score_offset = 85,
             min_keyword_length = 2,
-          },
-          dadbod = {
-            module = 'vim_dadbod_completion.blink',
-            name = 'Dadbod',
-            min_keyword_length = 2,
-            score_offset = 85,
           },
           lazydev = {
             module = 'lazydev.integrations.blink',
