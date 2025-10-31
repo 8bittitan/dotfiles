@@ -18,18 +18,20 @@ return {
     packageManager = 'yarn',
     options = opts,
   },
-  on_attach = function(_, bufnr)
+  on_attach = function(client, bufnr)
+    -- Taken from: https://github.com/neovim/nvim-lspconfig/blob/master/lsp/eslint.lua#L78
     vim.api.nvim_create_autocmd('BufWritePre', {
       buffer = bufnr,
       callback = function()
-        require('utils').override_lsp_notify()
-
-        local current_diagnostics = vim.lsp.diagnostic.from(vim.diagnostic.get(bufnr))
-
-        vim.lsp.buf.code_action({
-          context = { only = { 'source.fixAll' }, diagnostics = current_diagnostics },
-          apply = true,
-        })
+        client:request_sync('workspace/executeCommand', {
+          command = 'eslint.applyAllFixes',
+          arguments = {
+            {
+              uri = vim.uri_from_bufnr(bufnr),
+              version = vim.lsp.util.buf_versions[bufnr],
+            },
+          },
+        }, nil, bufnr)
       end,
     })
   end,
