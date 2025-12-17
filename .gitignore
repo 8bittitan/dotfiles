@@ -61,6 +61,7 @@
 !.fzf.zsh
 !.gitconfig
 !.gitignore
+!.gitignore_global
 !.osx
 !.pryrc
 !.tmux.conf
