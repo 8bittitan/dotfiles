@@ -8,26 +8,27 @@ return {
 
     conform.setup({
       formatters = {
-        -- TODO: Fix when there is better support for V2
-        -- biome = {
-        --   require_cwd = true,
-        --   command = 'biome',
-        --   args = { 'check', '--fix', '--assist-enabled=true', '--stdin-file-path=$RELATIVE_FILEPATH$EXTENSION' },
-        -- },
         biome = {
+          require_cwd = true,
+        },
+        ['biome-organize-imports'] = {
+          require_cwd = true,
+        },
+        prettier = {
           require_cwd = true,
         },
       },
       formatters_by_ft = {
         lua = { 'stylua' },
-        javascript = { 'prettier', lsp_format = 'first' },
-        typescript = { 'prettier', lsp_format = 'first' },
-        javascriptreact = { 'prettier', lsp_format = 'first' },
-        typescriptreact = { 'prettier', lsp_format = 'first' },
+        javascript = { 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
+        typescript = { 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
+        javascriptreact = { 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
+        typescriptreact = { 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
         ruby = { 'rubocop', timeout_ms = 1500 },
         go = { 'gofmt', 'goimports' },
         json = { 'biome' },
         php = { 'pint' },
+        python = { 'black' },
       },
       format_on_save = {
         timeout_ms = 1000,

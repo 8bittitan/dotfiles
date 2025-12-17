@@ -7,14 +7,14 @@ return {
 
         local current_diagnostics = vim.lsp.diagnostic.from(vim.diagnostic.get(bufnr))
 
-        vim.lsp.buf.code_action({
-          context = {
-            ---@diagnostic disable-next-line: assign-type-mismatch
-            only = { 'source.fixAll.biome' },
-            diagnostics = current_diagnostics,
-          },
-          apply = true,
-        })
+        -- vim.lsp.buf.code_action({
+        --   context = {
+        --     ---@diagnostic disable-next-line: assign-type-mismatch
+        --     only = { 'source.fixAll.biome' },
+        --     diagnostics = current_diagnostics,
+        --   },
+        --   apply = true,
+        -- })
       end,
     })
   end,
