@@ -15,7 +15,6 @@ M.servers = {
   'ruby_lsp',
   'tailwindcss',
   'ts_ls',
-  'zls',
 }
 
 M.linters = {

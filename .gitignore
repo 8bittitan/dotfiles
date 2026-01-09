@@ -36,6 +36,9 @@
 !.config/nvim/
 !.config/nvim/**/*
 
+!.config/opencode/
+!.config/opencode/opencode.json
+
 !.config/wezterm/
 !.config/wezterm/**/*
 

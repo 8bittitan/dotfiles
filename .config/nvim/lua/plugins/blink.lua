@@ -35,6 +35,9 @@ return {
       completion = {
         accept = {
           create_undo_point = false,
+          auto_brackets = {
+            enabled = false,
+          },
         },
         menu = {
           border = 'rounded',
@@ -44,16 +47,26 @@ return {
           auto_show_delay_ms = 500,
           window = { border = 'rounded' },
         },
+        ghost_text = {
+          enabled = false,
+        },
       },
       signature = { enabled = true },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
-        per_filetype = { sql = { 'snippets', 'buffer' } },
+        default = function()
+          if vim.bo.filetype == 'opencode_ask' then
+            return { 'lsp', 'buffer' }
+          elseif vim.bo.filetype == 'lua' then
+            return { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' }
+          else
+            return { 'lsp', 'path', 'snippets', 'buffer' }
+          end
+        end,
         providers = {
           lsp = {
             name = 'lsp',
             enabled = true,
-            kind = 'LSP',
+            -- kind = 'LSP',
             score_offset = 90,
           },
           path = {
@@ -63,8 +76,9 @@ return {
             opts = {
               trailing_slash = false,
               label_trailing_slash = true,
-              get_cwd = function(context)
-                return vim.fn.expand(('#%d:p:h'):format(context.bufnr))
+              get_cwd = function()
+                return vim.fn.getcwd()
+                -- return vim.fn.expand(('#%d:p:h'):format(context.bufnr))
               end,
               show_hidden_files_by_default = true,
             },

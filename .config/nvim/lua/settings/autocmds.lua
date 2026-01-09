@@ -90,3 +90,17 @@ aucmd({ 'WinEnter', 'BufEnter' }, {
     vim.o.statusline = "%!v:lua.require'status-line'.load()"
   end,
 })
+
+local folds_group = augroup('RememberFolds')
+
+aucmd('BufWinLeave', {
+  group = folds_group,
+  pattern = { '*.*' },
+  command = 'mkview',
+})
+
+aucmd('BufWinEnter', {
+  group = folds_group,
+  pattern = { '*.*' },
+  command = 'silent! loadview',
+})

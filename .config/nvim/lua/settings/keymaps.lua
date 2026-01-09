@@ -11,6 +11,11 @@ wk.add({
     desc = '[R]esume last Telescope search',
   },
   {
+    '<leader>fd',
+    "<cmd>lua require('telescope.builtin').diagnostics()<CR>",
+    desc = '[F]ind [D]iagnostics',
+  },
+  {
     '<leader>fb',
     "<cmd>lua require('telescope.builtin').buffers()<CR>",
     desc = '[F]ind open [B]uffers',
@@ -23,12 +28,12 @@ wk.add({
   {
     '<leader>fg',
     "<cmd>lua require('telescope.builtin').live_grep()<CR>",
-    desc = 'Live grep within files',
+    desc = '[F]ind with [G]rep',
   },
   {
     '<leader>fo',
     "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>",
-    desc = 'Grep within open files',
+    desc = '[F]ind within [O]pen files',
   },
   {
     '<leader>fh',
@@ -58,7 +63,15 @@ key('n', '<leader>bf', '<cmd>Neotree toggle buffers<CR>', { noremap = false })
 
 -- General
 key('i', '<CR>', 'v:lua.MUtils.completion_confirm()', { expr = true, noremap = true })
-key('i', 'jk', '<ESC>', noremap)
+wk.add({
+  {
+    'jk',
+    '<ESC>',
+    noremap = true,
+    mode = { 'i', 't' },
+  },
+})
+-- key('i', 'jk', '<ESC>', noremap)
 key('n', '+', '<c-a>', silent_no_remap)
 key('n', '-', '<c-x>', silent_no_remap)
 key('n', '<leader>/', '<cmd>noh<cr>', silent_no_remap)

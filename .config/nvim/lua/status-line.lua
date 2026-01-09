@@ -158,7 +158,7 @@ local function get_active_lsps()
       i = i + 1
     end
 
-    return str .. _spacer(2)
+    return str .. _spacer(1)
   else
     return ''
   end
@@ -173,7 +173,7 @@ local function get_branch()
     return ''
   end
 
-  return hl_accent .. ' ' .. hl_main .. branch .. _spacer(2)
+  return hl_accent .. ' ' .. hl_main .. branch .. _spacer(1)
 end
 
 local function get_recording()
@@ -187,6 +187,13 @@ local function get_recording()
   end
 
   return hl_accent .. ' ' .. hl_main .. status .. _spacer(2)
+end
+
+local function get_opencode()
+  local oc = require('opencode')
+  local hl_opencode = '%#Opencode#'
+
+  return hl_opencode .. oc.statusline()
 end
 
 M.setup = function()
@@ -214,6 +221,8 @@ M.load = function()
     get_recording(),
     get_active_lsps(),
     get_branch(),
+    get_opencode(),
+    _spacer(1),
     _truncate(),
   })
 end

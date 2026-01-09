@@ -27,6 +27,7 @@ return {
           NormalFloat = { bg = 'palette.bg1', fg = 'palette.fg1' },
           BlinkCmpDoc = { bg = 'palette.bg1', fg = 'palette.fg1' },
           BlinkCmpDocBorder = { bg = 'palette.bg1', fg = 'palette.sel0' },
+          Opencode = { fg = 'palette.cyan.bright', bg = 'palette.bg1' },
         },
       },
     })

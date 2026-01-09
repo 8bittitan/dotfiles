@@ -7,12 +7,12 @@ fi
 
 # Install homebrew
 if [ ! -d "/opt/homebrew" ]; then
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Install ohmyzsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 # Install mise
@@ -25,7 +25,7 @@ fi
 mise install
 
 if [ ! -d "/opt/homebrew/bin/stow" ]; then
-	brew install stow
+  brew install stow
 fi
 
 stow .
@@ -48,4 +48,8 @@ fi
 
 if [ -d "/opt/homebrew/bin/gh" ]; then
   gh extension install dlvhdr/gh-dash
+fi
+
+if [ ! -d "$HOME/.opencode/bin" ]; then
+  curl -fsSL https://opencode.ai/install | bash
 fi

@@ -1,6 +1,3 @@
-tap "hashicorp/tap"
-tap "sst/tap"
-
 brew "bat"
 brew "coreutils"
 brew "curl"
@@ -28,8 +25,6 @@ brew "vale"
 brew "yazi"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-brew "hashicorp/tap/vault"
-brew "sst/tap/opencode"
 
 cask "font-blex-mono-nerd-font"
 cask "orbstack"

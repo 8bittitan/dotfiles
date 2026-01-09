@@ -15,7 +15,6 @@ end
 
 return {
   settings = {
-    packageManager = 'yarn',
     options = opts,
   },
   on_attach = function(client, bufnr)

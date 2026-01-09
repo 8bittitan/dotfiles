@@ -1,18 +1,45 @@
+local default_capabilities = require('blink.cmp').get_lsp_capabilities({}, true)
+
+default_capabilities.textDocument.completion.completionItem.snippetSupport = true
+default_capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  },
+}
+
+vim.lsp.config('*', {
+  on_attach = function(_, bufnr)
+    vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+  end,
+  capabilities = default_capabilities,
+  flags = { debounce_text_changes = 200 },
+})
+
+vim.lsp.enable('zls')
+
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function()
     local wk = require('which-key')
 
+    local goto_definition_in_split = function()
+      vim.cmd('vsplit')
+      vim.lsp.buf.definition()
+    end
+
     wk.add({
       { 'K', '<cmd>lua vim.lsp.buf.hover({border = "single"})<CR>', desc = 'Show hover info' },
       { 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', desc = '[G]oto [D]efinition' },
+      { 'gs', goto_definition_in_split, desc = '[G]oto definition in [S]plit' },
       { 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>", desc = '[G]oto [R]eferences' },
       { 'gI', '<cmd>lua vim.lsp.buf.implementation()<CR>', desc = '[G]oto [I]mplementation' },
       { 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', desc = '[C]ode [A]ctions' },
       { 'rn', '<cmd>lua vim.lsp.buf.rename()<CR>', desc = '[R]e[n]ame' },
       { 'df', '<cmd>lua vim.diagnostic.open_float()<CR>', desc = '[D]iagnostics [F]loat' },
-      { 'dq', "<cmd>lua require('telescope.builtin').diagnostics{}<CR>", desc = '[D]iagnostics [Q]uickfix' },
+      { 'dq', "<cmd>lua require('telescope.builtin').diagnostics()<CR>", desc = '[D]iagnostics [Q]uickfix' },
       {
         '<leader>ds',
         "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>",

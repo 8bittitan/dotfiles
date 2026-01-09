@@ -1,5 +1,9 @@
 return {
-  init_options = {
-    experimentalFeaturesEnabled = true,
+  settings = {
+    rubyLsp = {
+      formatter = 'auto',
+      rubocopPath = 'bundle exec rubocop',
+      experimentalFeaturesEnabled = true,
+    },
   },
 }

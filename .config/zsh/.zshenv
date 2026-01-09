@@ -18,6 +18,9 @@ export GOPATH="$HOME/projects/"
 
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
+# Opencode
+export PATH=/Users/pauljankowski/.opencode/bin:$PATH
+
 export FZF_COMPLETION_TRIGGER=',,'
 export FZF_DEFAULT_COMMAND='rga --files --hidden -g "!{node_modules,.git,.vscode,.cache,.terraform,.DS_Store,.Trash,.terraform.d,.npm,.dotfiles,.nvm}"'
 export FZF_PREVIEW_COLUMNS

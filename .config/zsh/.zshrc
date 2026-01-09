@@ -11,6 +11,7 @@ eval "$(mise hook-env)"
 
 plugins=(
   fzf-tab
+  poetry
 )
 
 [[ -f "$ZSH"/oh-my-zsh.sh ]] && source "$ZSH"/oh-my-zsh.sh

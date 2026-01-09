@@ -1,6 +1,9 @@
 return {
   settings = {
     Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
       diagnostics = {
         globals = { 'vim' },
       },
@@ -9,6 +12,9 @@ return {
       },
       workspace = {
         checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME,
+        },
       },
     },
   },

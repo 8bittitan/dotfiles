@@ -10,7 +10,6 @@ o.clipboard = 'unnamedplus'
 o.completeopt = { 'menu', 'menuone', 'noselect' }
 o.encoding = 'UTF-8'
 o.errorbells = false
-o.fillchars = { vert = ' ' }
 o.hidden = true
 o.hlsearch = true
 o.ignorecase = true
@@ -50,5 +49,7 @@ o.number = true
 o.relativenumber = true
 o.ruler = true
 o.laststatus = 3
+
+o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
 g.skip_ts_context_commentstring_module = true
