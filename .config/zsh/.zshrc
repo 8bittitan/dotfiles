@@ -55,7 +55,7 @@ export LS_COLORS="$(vivid generate rose-pine-moon)"
 # source "$HOME"/fzf-tab/fzf-tab.plugin.zsh
 
 # pnpm
-export PNPM_HOME="/Users/pauljankowski/Library/pnpm";
+export PNPM_HOME="$HOME/Library/pnpm";
 export PATH="$PNPM_HOME:$PATH";
 # pnpm end
 
@@ -65,15 +65,6 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # PHP
 export PATH="$HOME/.composer/vendor/bin:$PATH";
-# Herd injected PHP binary.
-export PATH="/Users/pauljankowski/Library/Application Support/Herd/bin/":$PATH
-export PHP_INI_SCAN_DIR="/Users/pauljankowski/Library/Application Support/Herd/config/php/":$PHP_INI_SCAN_DIR
-# Herd injected PHP 8.2 configuration.
-export HERD_PHP_82_INI_SCAN_DIR="/Users/pauljankowski/Library/Application Support/Herd/config/php/82/"
-# Herd injected PHP 8.3 configuration.
-export HERD_PHP_83_INI_SCAN_DIR="/Users/pauljankowski/Library/Application Support/Herd/config/php/83/"
-# Herd injected PHP 8.4 configuration.
-export HERD_PHP_84_INI_SCAN_DIR="/Users/pauljankowski/Library/Application Support/Herd/config/php/84/"
 
 # Disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1

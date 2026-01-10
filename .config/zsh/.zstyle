@@ -54,12 +54,12 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always --icons --git
 zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
 
 # File operations previews
-zstyle ':fzf-tab:complete:(ls|eza|exa|fd|find):*' fzf-preview 'eza -1 --color=always --icons $PWD/${(Q)word}'
+zstyle ':fzf-tab:complete:(ls|eza|exa|fd|find|l):*' fzf-preview 'eza -1 --color=always --icons $PWD/${(Q)word}'
 zstyle ':fzf-tab:complete:(rm|mv|cp):*' fzf-preview 'eza -1 --color=always --icons $PWD/${(Q)word}'
 
 # Editor previews
-zstyle ':fzf-tab:complete:(nvim|vim|vi|nano|code):*' fzf-min-height 90
-zstyle ':fzf-tab:complete:(nvim|vim|vi|nano|code):*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $PWD/${(Q)word}'
+zstyle ':fzf-tab:complete:(nvim|vim|vi|nano|code|v):*' fzf-min-height 90
+zstyle ':fzf-tab:complete:(nvim|vim|vi|nano|code|v):*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $PWD/${(Q)word}'
 
 # Text viewing previews
 zstyle ':fzf-tab:complete:(bat|cat|less|more):*' fzf-min-height 90
