@@ -54,17 +54,9 @@ export LS_COLORS="$(vivid generate rose-pine-moon)"
 #
 # source "$HOME"/fzf-tab/fzf-tab.plugin.zsh
 
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm";
-export PATH="$PNPM_HOME:$PATH";
-# pnpm end
-
 # Install plugins from brew
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# PHP
-export PATH="$HOME/.composer/vendor/bin:$PATH";
 
 # Disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1

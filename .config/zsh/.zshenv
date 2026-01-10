@@ -16,6 +16,13 @@ export ZSH="$HOME/.oh-my-zsh"
 export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
 export GOPATH="$HOME/projects/"
 
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm";
+export PATH="$PNPM_HOME:$PATH";
+
+# PHP
+export PATH="$HOME/.composer/vendor/bin:$PATH";
+
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 # Opencode
