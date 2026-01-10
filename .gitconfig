@@ -13,7 +13,7 @@
 
 [core]
   editor = nvim
-  pager = delta
+  pager = delta --side-by-side --width $(expr ${COLUMNS} - 10) --wrap-max-lines unlimited
   excludesfile = ~/.gitignore_global
 
 [pull]
@@ -60,6 +60,15 @@
 [rebase]
   autosquash = true
   autostash = true
+
+[tag]
+  gpgSign = true
+
+[commit]
+  gpgSign = true
+
+[gpg]
+  format = ssh
 
 [log]
   date = iso
