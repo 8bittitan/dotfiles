@@ -1,10 +1,22 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "share": "disabled",
+  "share": "manual",
   "autoupdate": true,
-  "theme": "rosepine",
   "default_agent": "plan",
   "tools": {
     "lsp": true
+  },
+  "provider": {
+    "openai": {
+      "options": {
+        "baseURL": "https://us.api.openai.com/v1"
+      }
+    }
+  },
+  "mcp": {
+    "docsearch": {
+      "type": "remote",
+      "url": "https://mcp.algolia.com/1/docsearch/mcp"
+    }
   }
 }

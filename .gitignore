@@ -38,6 +38,17 @@
 
 !.config/opencode/
 !.config/opencode/opencode.json
+!.config/opencode/commands/
+!.config/opencode/commands/explore-docs.md
+!.config/opencode/commands/grill.md
+!.config/opencode/commands/local-review.md
+!.config/opencode/commands/pr-description.md
+
+!.config/television/
+!.config/television/config.toml
+!.config/television/cable/
+!.config/television/cable/files.toml
+!.config/television/cable/sesh.toml
 
 !.config/wezterm/
 !.config/wezterm/**/*
