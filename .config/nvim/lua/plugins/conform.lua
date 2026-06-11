@@ -17,18 +17,24 @@ return {
         prettier = {
           require_cwd = true,
         },
+        oxfmt = {
+          require_cwd = true,
+        },
+        ['golangci-lint'] = {
+          require_cwd = true,
+        },
       },
       formatters_by_ft = {
         lua = { 'stylua' },
-        javascript = { 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
-        typescript = { 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
-        javascriptreact = { 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
-        typescriptreact = { 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
+        javascript = { 'oxfmt', 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
+        typescript = { 'oxfmt', 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
+        javascriptreact = { 'oxfmt', 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
+        typescriptreact = { 'oxfmt', 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
         ruby = { 'rubocop', timeout_ms = 1500 },
-        go = { 'gofmt', 'goimports' },
+        go = { 'golangci-lint', 'gofmt', 'goimports' },
         json = { 'biome' },
         php = { 'pint' },
-        python = { 'black' },
+        python = { 'ruff_format' },
       },
       format_on_save = {
         timeout_ms = 1000,

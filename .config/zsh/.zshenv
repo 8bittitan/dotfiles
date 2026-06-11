@@ -14,7 +14,6 @@ export VI_MODE_SET_CURSOR=true
 export XDG_CONFIG_HOME=$HOME/.config
 export ZSH="$HOME/.oh-my-zsh"
 export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
-export GOPATH="$HOME/projects/"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm";

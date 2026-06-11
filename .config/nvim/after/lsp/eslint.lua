@@ -1,22 +1,4 @@
-local opts = {}
-local cwd = vim.fn.getcwd()
-
-if string.find(cwd, 'AlgoliaWeb') then
-  opts.rulePaths = { './_client/.eslint_rules' }
-end
-
-if string.find(cwd, '_client') then
-  opts.rulePaths = { './.eslint_rules' }
-end
-
-if string.find(cwd, '_client_admin') then
-  opts.rulePaths = { './eslint_rules' }
-end
-
 return {
-  settings = {
-    options = opts,
-  },
   on_attach = function(client, bufnr)
     -- Taken from: https://github.com/neovim/nvim-lspconfig/blob/master/lsp/eslint.lua#L78
     vim.api.nvim_create_autocmd('BufWritePre', {

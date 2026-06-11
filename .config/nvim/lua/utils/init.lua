@@ -11,7 +11,6 @@ M.servers = {
   'jsonls',
   'lua_ls',
   'prismals',
-  'pyright',
   'ruby_lsp',
   'tailwindcss',
   'ts_ls',

@@ -12,6 +12,7 @@ alias c='clear';
 alias ~='cd ~';
 alias zconf='source ~/.zshrc';
 alias v='nvim';
+alias oc='opencode'
 
 # Eza
 alias l="eza -lbha -o --icons --group-directories-first --hyperlink --color-scale=size"
@@ -25,8 +26,7 @@ alias pull='git pull';
 alias gs='git status';
 alias develop='git checkout develop';
 alias staging='git checkout staging';
-alias master='git checkout master';
-alias commit='git commit';
+alias commit='git commit -S';
 alias co='git checkout';
 alias gd="gh dash";
 

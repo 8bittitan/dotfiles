@@ -1,8 +1,21 @@
 return {
   'NickvanDyke/opencode.nvim',
   dependencies = {
-    ---@module 'snacks'
-    { 'folke/snacks.nvim', opts = { input = {}, picker = {}, terminal = {} } },
+    {
+      ---@module 'snacks'
+      'folke/snacks.nvim',
+      optional = true,
+      opts = {
+        input = {},
+        picker = {
+          actions = {
+            opencode_send = function(...)
+              return require('opencode').snacks_picker_send(...)
+            end,
+          },
+        },
+      },
+    },
   },
   config = function()
     --- @type opencode.Opts

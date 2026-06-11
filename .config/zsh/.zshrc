@@ -1,11 +1,10 @@
-eval "$(mise env)"
-
 # Uncomment the following line if pasting URLs and other text is messed up.
 DISABLE_MAGIC_FUNCTIONS="true"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Setup mise
 eval "$(~/.local/bin/mise activate zsh)"
-eval "$(mise hook-env)"
 
 [[ -f "$ZDOTDIR"/.zstyle ]] && source "$ZDOTDIR"/.zstyle
 
@@ -27,7 +26,6 @@ for file in $helper_files; do
   [[ -f $file ]] && source $file
 done
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
@@ -72,4 +70,5 @@ function y() {
 # Keep at end
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
-
+eval "$(zoxide init zsh)"
+eval "$(tv init zsh)"

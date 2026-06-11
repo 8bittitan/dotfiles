@@ -18,6 +18,7 @@ vim.lsp.config('*', {
 })
 
 vim.lsp.enable('zls')
+vim.lsp.enable('elixirls')
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',

@@ -71,11 +71,21 @@ wk.add({
     mode = { 'i', 't' },
   },
 })
--- key('i', 'jk', '<ESC>', noremap)
 key('n', '+', '<c-a>', silent_no_remap)
 key('n', '-', '<c-x>', silent_no_remap)
+
+-- Removes active search/highlight
 key('n', '<leader>/', '<cmd>noh<cr>', silent_no_remap)
 
+-- Move lines
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Moves lines down in visual mode' })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Moves lines up in visual mode' })
+
+-- Indents
+vim.keymap.set('v', '<', '<gv', { desc = 'Unindent and keep selection' })
+vim.keymap.set('v', '>', '>gv', { desc = 'Indent and keep selection' })
+
+-- Write, quit, write + quit
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>')
 vim.keymap.set('n', '<leader>q', '<cmd>q<CR>')
 vim.keymap.set('n', '<leader>x', '<cmd>wq<CR>')

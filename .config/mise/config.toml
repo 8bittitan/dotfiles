@@ -1,13 +1,14 @@
 [tools]
-direnv = 'latest'
 nodejs = { version = '22', postinstall = 'corepack enable' }
 golang = '1.25'
 ruby = "3.4.7"
 zig = "0.15.2"
 rust = 'latest'
 lua = "latest"
-bun = "1.3.5"
+bun = "1.3.11"
 zls = "0.15.1"
+go = "1.25.6"
+node = { version = "24.11.1", postinstall = "corepack enable" }
 
 [settings]
 legacy_version_file = true
@@ -18,6 +19,7 @@ trusted_config_paths = [
   '~/projects/'
 ]
 
+activate_aggressive = true
 verbose = false
 asdf_compat = true
 jobs = 4
@@ -28,8 +30,7 @@ not_found_auto_install = true
 task_output = 'prefix'
 paranoid = false
 
-disable_default_shorthands = false
-env_file = '.env'
+# env_file = '.env'
 experimental = true
 status = {missing_tools = 'always', show_env = false, show_tools = false}
-idiomatic_version_file_enable_tools = ["node", "ruby", "python"]
+idiomatic_version_file_enable_tools = ["node", "ruby", "python", "go"]
