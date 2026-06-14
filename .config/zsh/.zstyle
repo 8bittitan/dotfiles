@@ -77,7 +77,7 @@ zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
     "commit tag") git show --color=always ${(Q)word} ;;
     *) git show --color=always ${(Q)word} | delta ;;
   esac'
-zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
+zstyle ':fzf-tab:complete:(git-checkout|co|branch):*' fzf-preview \
   'case "$group" in
     "modified file") git diff --color=always $PWD/${(Q)word} | delta ;;
     "branch") git log --color=always --oneline --graph --decorate ${(Q)word} ;;
