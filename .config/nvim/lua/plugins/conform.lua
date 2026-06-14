@@ -35,6 +35,7 @@ return {
         json = { 'biome' },
         php = { 'pint' },
         python = { 'ruff_format' },
+        rust = { 'rustfmt' },
       },
       format_on_save = {
         timeout_ms = 1000,

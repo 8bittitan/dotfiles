@@ -17,8 +17,9 @@ vim.lsp.config('*', {
   flags = { debounce_text_changes = 200 },
 })
 
-vim.lsp.enable('zls')
-vim.lsp.enable('elixirls')
+vim.lsp.enable({ 'zls', 'elixirls' })
+
+vim.lsp.enable('rust_analyzer', false)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
