@@ -1,11 +1,11 @@
 ---
-description: Perform a code review on the latest (uncommited) changes
+description: Perform a code review on the latest (uncommited/untracked) changes
 agent: plan
 ---
 
 # Review
 
-Three-axis review of the diff between `HEAD` and the uncommited changes:
+Three-axis review of the diff between `HEAD` and the uncommited/untracked changes:
 
 - **Standards** — does the code conform to this repo's documented coding standards?
 - **Performance** — does the code faithfully implement best practices for performance?
