@@ -12,7 +12,8 @@ alias c='clear';
 alias ~='cd ~';
 alias zconf='source ~/.zshrc';
 alias v='nvim';
-alias oc='opencode'
+
+oc() { OPENCODE_GITHUB_MCP_TOKEN="$(gopass show OpenCode/github-mcp-token -o -y -u)" command opencode "$@"; }
 
 # Eza
 alias l="eza -lbha -o --icons --group-directories-first --hyperlink --color-scale=size"

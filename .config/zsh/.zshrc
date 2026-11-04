@@ -1,11 +1,30 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Cache a tool's init script; regenerate only when the binary is newer
+_cached_init() {
+  emulate -L zsh
+  local name="$1" bin="$2"; shift 2
+  local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/init"
+  local out="$cache_dir/$name.zsh"
+  local binfile="${commands[$bin]}"
+  [[ -d $cache_dir ]] || mkdir -p "$cache_dir"
+  [[ -z $binfile ]] && return 0
+  if [[ ! -s $out || $binfile -nt $out ]]; then
+    "$binfile" "$@" >| "$out" || { rm -f "$out"; return 1; }
+  fi
+  source "$out"
+}
+
+zsh-refresh-init() { rm -rf "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/init"; exec zsh }
+
+# eval "$(/opt/homebrew/bin/brew shellenv)"
+export HOMEBREW_PREFIX=/opt/homebrew HOMEBREW_CELLAR=/opt/homebrew/Cellar HOMEBREW_REPOSITORY=/opt/homebrew
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
 
 # Setup mise
-eval "$(~/.local/bin/mise activate zsh)"
+# eval "$(~/.local/bin/mise activate zsh)"
+_cached_init mise mise activate zsh
 
 [[ -f "$ZDOTDIR"/.zstyle ]] && source "$ZDOTDIR"/.zstyle
-
-autoload -U add-zsh-hook
 
 helper_files=(
   "$ZDOTDIR"/aliases.zsh
@@ -34,24 +53,38 @@ fi
 
 # MUST BE BELOW COMPLETIONS
 # vault ships a bash-style dynamic completion; needs bashcompinit + compinit
-complete -o nospace -C /opt/homebrew/bin/vault vault;
-source <(kubectl completion zsh)
-eval "$(fzf --zsh)"
-eval "$(ov --completion zsh)"
-eval "$(tspin --completions zsh)"
-eval "$(wt config shell init zsh)"
-eval "$(gopass completion zsh)"
+# complete -o nospace -C /opt/homebrew/bin/vault vault;
+# source <(kubectl completion zsh)
+# eval "$(fzf --zsh)"
+# eval "$(ov --completion zsh)"
+# eval "$(tspin --completions zsh)"
+# eval "$(wt config shell init zsh)"
+# eval "$(gopass completion zsh)"
+
+_cached_init mise      mise     activate zsh
+_cached_init kubectl   kubectl  completion zsh
+_cached_init fzf       fzf      --zsh
+_cached_init ov        ov       --completion zsh
+_cached_init tspin     tspin    --completions zsh
+_cached_init wt        wt       config shell init zsh
+_cached_init gopass    gopass   completion zsh
+_cached_init starship  starship init zsh
+_cached_init atuin     atuin    init zsh
+_cached_init zoxide    zoxide   init zsh
+_cached_init tv        tv       init zsh
 
 bindkey -v
 
 export LS_COLORS="$(vivid generate rose-pine-moon)"
 
-[[ ! -f ~/.local/share/zsh/fzf-tab/fzf-tab.plugin.zsh ]] && git clone https://github.com/Aloxaf/fzf-tab ~/.local/share/zsh/fzf-tab/fzf-tab.plugin.zsh
+[[ -d ~/.local/share/zsh/fzf-tab ]] || git clone --depth 1 https://github.com/Aloxaf/fzf-tab ~/.local/share/zsh/fzf-tab
 source ~/.local/share/zsh/fzf-tab/fzf-tab.plugin.zsh
 
 # Install plugins from brew
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -63,9 +96,3 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
-
-# Keep at end
-eval "$(atuin init zsh)"
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
-eval "$(tv init zsh)"

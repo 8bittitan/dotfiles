@@ -2,7 +2,7 @@
 
 # Cache completions for faster startup
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$HOME/.cache/zsh/.zcompcache"
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/.zcompcache"
 
 # Basic completion settings
 zstyle ':completion:*' completer _complete _ignored _approximate
