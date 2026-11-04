@@ -1,6 +1,3 @@
-# Uncomment the following line if pasting URLs and other text is messed up.
-DISABLE_MAGIC_FUNCTIONS="true"
-
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Setup mise
@@ -8,12 +5,6 @@ eval "$(~/.local/bin/mise activate zsh)"
 
 [[ -f "$ZDOTDIR"/.zstyle ]] && source "$ZDOTDIR"/.zstyle
 
-plugins=(
-  fzf-tab
-  poetry
-)
-
-[[ -f "$ZSH"/oh-my-zsh.sh ]] && source "$ZSH"/oh-my-zsh.sh
 autoload -U add-zsh-hook
 
 helper_files=(
@@ -26,20 +17,24 @@ for file in $helper_files; do
   [[ -f $file ]] && source $file
 done
 
-
-FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
 
 autoload -Uz bashcompinit && bashcompinit
 autoload -Uz compinit
 
-# only check it once a day to see if it's changed
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
+typeset -g ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-$ZSH_VERSION"
+[[ -d ${ZSH_COMPDUMP:h} ]] || mkdir -p ${ZSH_COMPDUMP:h}
+
+if [[ ! -f $ZSH_COMPDUMP ]] || [[ -n $ZSH_COMPDUMP(#qN.mh+24) ]]; then
+  compinit -d "$ZSH_COMPDUMP"
+  zcompile -Uz "$ZSH_COMPDUMP"
+else
+  compinit -C -d "$ZSH_COMPDUMP"
+fi
 
 # MUST BE BELOW COMPLETIONS
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# vault ships a bash-style dynamic completion; needs bashcompinit + compinit
+complete -o nospace -C /opt/homebrew/bin/vault vault;
 source <(kubectl completion zsh)
 eval "$(fzf --zsh)"
 eval "$(ov --completion zsh)"
@@ -51,10 +46,8 @@ bindkey -v
 
 export LS_COLORS="$(vivid generate rose-pine-moon)"
 
-# TODO: Add back once removing oh-my-zsh
-# [[ ! -f "$HOME"/fzf-tab/fzf-tab.plugin.zsh ]] && git clone https://github.com/Aloxaf/fzf-tab "$HOME"/fzf-tab
-#
-# source "$HOME"/fzf-tab/fzf-tab.plugin.zsh
+[[ ! -f ~/.local/share/zsh/fzf-tab/fzf-tab.plugin.zsh ]] && git clone https://github.com/Aloxaf/fzf-tab ~/.local/share/zsh/fzf-tab/fzf-tab.plugin.zsh
+source ~/.local/share/zsh/fzf-tab/fzf-tab.plugin.zsh
 
 # Install plugins from brew
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

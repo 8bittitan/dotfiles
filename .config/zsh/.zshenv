@@ -1,18 +1,12 @@
 export CARGOPATH="$HOME/.cargo/bin"
 export COLUMNS
-export COMPLETION_WAITING_DOTS="true"
-export DISABLE_AUTO_TITLE=true
 export EDITOR='nvim'
 export GPG_TTY=$TTY
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PAGER='bat'
-export TERM="xterm-256color" # This sets up colors properly
-export UPDATE_ZSH_DAYS=30
 export VISUAL='nvim' # editor to be opened from $PAGER
-export VI_MODE_SET_CURSOR=true
 export XDG_CONFIG_HOME=$HOME/.config
-export ZSH="$HOME/.oh-my-zsh"
 export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
 export TAILSPIN_PAGER="ov -f [FILE]"
 
