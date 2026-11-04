@@ -1,44 +1,64 @@
 local wk = require('which-key')
 local key = vim.api.nvim_set_keymap
 local silent_no_remap = { noremap = true, silent = true }
-local noremap = { noremap = true }
 
--- Telescope
+-- Snacks
 wk.add({
   {
     '<leader>r',
-    "<cmd>lua require('telescope.builtin').resume()<CR>",
-    desc = '[R]esume last Telescope search',
+    function()
+      Snacks.picker.resume()
+    end,
+    desc = '[R]esume last picker search',
   },
   {
     '<leader>fd',
-    "<cmd>lua require('telescope.builtin').diagnostics()<CR>",
+    function()
+      Snacks.picker.diagnostics()
+    end,
     desc = '[F]ind [D]iagnostics',
   },
   {
     '<leader>fb',
-    "<cmd>lua require('telescope.builtin').buffers()<CR>",
+    function()
+      Snacks.picker.buffers()
+    end,
     desc = '[F]ind open [B]uffers',
   },
   {
     '<leader>ff',
-    "<cmd>lua require('telescope.builtin').find_files()<CR>",
+    function()
+      Snacks.picker.smart({ cwd = vim.fn.getcwd() })
+    end,
     desc = '[F]ind [F]iles',
   },
   {
     '<leader>fg',
-    "<cmd>lua require('telescope.builtin').live_grep()<CR>",
+    function()
+      Snacks.picker.grep()
+    end,
     desc = '[F]ind with [G]rep',
   },
   {
     '<leader>fo',
-    "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>",
+    function()
+      Snacks.picker.grep({ buffers = true })
+    end,
     desc = '[F]ind within [O]pen files',
   },
   {
     '<leader>fh',
-    "<cmd>lua require('telescope.builtin').help_tags()<CR>",
+    function()
+      Snacks.picker.help()
+    end,
     desc = '[F]ind [H]elp',
+  },
+  {
+    '<leader>fk',
+    function()
+      Snacks.picker.keymaps()
+    end,
+    desc = '[F]ind [K]eymaps',
   },
   {
     '<leader><leader>',
@@ -47,13 +67,31 @@ wk.add({
   },
   {
     '<C-p>',
-    '<cmd>Telescope git_files<CR>',
+    function()
+      Snacks.picker.git_files()
+    end,
     desc = 'Find Git files',
   },
   {
     '<leader>fn',
-    "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })<CR>",
+    function()
+      Snacks.picker.files({ cwd = vim.fn.stdpath('config') })
+    end,
     desc = '[F]ind [N]eovim config files',
+  },
+  {
+    '<leader>lg',
+    function()
+      Snacks.lazygit.open()
+    end,
+    desc = 'Open [L]azy[G]it',
+  },
+  {
+    '<leader>gt',
+    function()
+      Snacks.git.blame_line()
+    end,
+    desc = '[G]it [T]oggle blame line',
   },
 })
 

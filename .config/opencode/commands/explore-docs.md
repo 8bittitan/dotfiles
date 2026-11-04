@@ -1,6 +1,7 @@
 ---
 description: Use docsearch to explore documentation and explain to the user
 agent: plan
+model: anthropic/claude-sonnet-5-5
 ---
 
 User query: $ARGUMENTS

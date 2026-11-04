@@ -176,25 +176,18 @@ local function get_branch()
   return hl_accent .. ' ' .. hl_main .. branch .. _spacer(1)
 end
 
-local function get_recording()
-  local hl_main = '%#StatusLineTextMain#'
-  local hl_accent = '%#StatusLineTextAccent#'
-  local noice = lazy_require('noice')
-  local status = noice.api.status.mode.get()
-
-  if status == nil then
-    return ''
-  end
-
-  return hl_accent .. ' ' .. hl_main .. status .. _spacer(2)
-end
-
-local function get_opencode()
-  local oc = require('opencode')
-  local hl_opencode = '%#Opencode#'
-
-  return hl_opencode .. oc.statusline()
-end
+-- local function get_recording()
+--   local hl_main = '%#StatusLineTextMain#'
+--   local hl_accent = '%#StatusLineTextAccent#'
+--   local noice = lazy_require('noice')
+--   local status = noice.api.status.mode.get()
+--
+--   if status == nil then
+--     return ''
+--   end
+--
+--   return hl_accent .. ' ' .. hl_main .. status .. _spacer(2)
+-- end
 
 M.setup = function()
   vim.opt.laststatus = 3
@@ -218,10 +211,9 @@ M.load = function()
     get_filename(),
     get_diagnostics(),
     _align(),
-    get_recording(),
+    -- get_recording(),
     get_active_lsps(),
     get_branch(),
-    get_opencode(),
     _spacer(1),
     _truncate(),
   })

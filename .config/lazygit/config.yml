@@ -11,9 +11,9 @@ gui:
   showCommandLog: true
   showFileTree: true
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --dark --true-color always --side-by-side --wrap-max-lines unlimited --paging=never
+      command: delta --dark --true-color always --side-by-side --wrap-max-lines unlimited --paging=never
       useConfig: false
   commit:
     signOff: false

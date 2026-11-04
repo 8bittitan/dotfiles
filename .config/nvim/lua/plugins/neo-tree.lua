@@ -7,6 +7,7 @@ return {
     'MunifTanjim/nui.nvim',
     's1n7ax/nvim-window-picker',
   },
+  lazy = false,
   config = function()
     require('neo-tree').setup({
       sources = {
@@ -29,17 +30,7 @@ return {
       enable_refresh_on_write = true,
       use_popups_for_input = true,
       close_if_last_window = true,
-      source_selector = {
-        winbar = false,
-        statusline = false,
-        show_scrolled_off_parent_node = false,
-        content_layout = 'start',
-        tabs_layout = 'equal',
-        truncation_character = '…',
-        tabs_min_width = nil,
-        tabs_max_width = nil,
-        padding = 0,
-      },
+      hide_root_node = true,
       window = {
         position = 'right',
         width = 40,

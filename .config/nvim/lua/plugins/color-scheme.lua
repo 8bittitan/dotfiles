@@ -1,5 +1,6 @@
 return {
   'EdenEast/nightfox.nvim',
+  branch = 'main',
   lazy = false,
   priority = 1000,
   config = function()
@@ -21,13 +22,16 @@ return {
           DiagnosticError = { bg = 'palette.bg1' },
           DiagnosticWarn = { bg = 'palette.bg1' },
           DiagnosticInfo = { bg = 'palette.bg1' },
+          DiagnosticVirtualTextError = { bg = 'NONE' },
+          DiagnosticVirtualTextWarn = { bg = 'NONE' },
+          DiagnosticVirtualTextInfo = { bg = 'NONE' },
+          DiagnosticVirtualTextHint = { bg = 'NONE' },
           Pmenu = { bg = 'palette.bg1', fg = 'palette.fg1' },
           PmenuSel = { bg = 'palette.bg2' },
           PmenuKind = { fg = 'palette.fg1' },
           NormalFloat = { bg = 'palette.bg1', fg = 'palette.fg1' },
           BlinkCmpDoc = { bg = 'palette.bg1', fg = 'palette.fg1' },
           BlinkCmpDocBorder = { bg = 'palette.bg1', fg = 'palette.sel0' },
-          Opencode = { fg = 'palette.cyan.bright', bg = 'palette.bg1' },
         },
       },
     })

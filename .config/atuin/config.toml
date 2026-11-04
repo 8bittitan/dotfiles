@@ -7,4 +7,11 @@ keymap_mode = "vim-normal"
 style = "auto"
 
 [theme]
-name = ""
+name = "default"
+
+[tmux]
+enabled = true
+
+[daemon]
+enabled = true
+autostart = true

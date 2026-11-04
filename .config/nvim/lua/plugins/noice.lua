@@ -13,6 +13,9 @@ return {
       },
     },
     notify = { enabled = false },
+    health = {
+      checker = false,
+    },
     presets = {
       bottom_search = false,
       command_palette = false,

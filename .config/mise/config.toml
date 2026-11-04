@@ -1,14 +1,26 @@
 [tools]
-nodejs = { version = '22', postinstall = 'corepack enable' }
 golang = '1.25'
 ruby = "3.4.7"
 zig = "0.15.2"
 rust = 'latest'
 lua = "latest"
-bun = "1.3.11"
+bun = "latest"
 zls = "0.15.1"
 go = "1.25.6"
-node = { version = "24.11.1", postinstall = "corepack enable" }
+node = { version = "latest", postinstall = "corepack enable" }
+atuin = "18.24.2"
+zoxide = "0.10.0"
+television = "0.15.9"
+starship = "1.26.0"
+yazi = "26.8.15"
+lazygit = "0.64.1"
+poetry = "2.2.1"
+buf = "1.73.0"
+uv = "0.12.13"
+"vfox:jdx/vfox-php" = "8.5.11"
+herdr = "0.9.3"
+worktrunk = "0.81.0"
+gopass = "1.17.4"
 
 [settings]
 legacy_version_file = true
@@ -27,10 +39,10 @@ raw = false
 yes = false
 
 not_found_auto_install = true
-task_output = 'prefix'
+task = {output = 'prefix'}
 paranoid = false
 
-# env_file = '.env'
+env_file = '.env'
 experimental = true
 status = {missing_tools = 'always', show_env = false, show_tools = false}
 idiomatic_version_file_enable_tools = ["node", "ruby", "python", "go"]

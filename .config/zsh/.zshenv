@@ -8,24 +8,26 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PAGER='bat'
 export TERM="xterm-256color" # This sets up colors properly
-export UPDATE_ZSH_DAYS=1
+export UPDATE_ZSH_DAYS=30
 export VISUAL='nvim' # editor to be opened from $PAGER
 export VI_MODE_SET_CURSOR=true
 export XDG_CONFIG_HOME=$HOME/.config
 export ZSH="$HOME/.oh-my-zsh"
 export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
+export TAILSPIN_PAGER="ov -f [FILE]"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm";
 export PATH="$PNPM_HOME:$PATH";
 
 # PHP
-export PATH="$HOME/.composer/vendor/bin:$PATH";
+export PATH="$HOME/.config/composer/vendor/bin:$PATH";
 
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 # Opencode
 export PATH=~/.opencode/bin:$PATH
+export PATH="/Users/pauljankowski/.bun/bin:$PATH"
 
 export FZF_COMPLETION_TRIGGER=',,'
 export FZF_DEFAULT_COMMAND='rga --files --hidden -g "!{node_modules,.git,.vscode,.cache,.terraform,.DS_Store,.Trash,.terraform.d,.npm,.dotfiles,.nvm}"'

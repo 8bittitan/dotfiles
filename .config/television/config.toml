@@ -46,7 +46,8 @@ orientation = "landscape"
 # A list of builtin themes can be found in the `themes` directory of the television
 # repository. You may also create your own theme by creating a new file in a `themes`
 # directory in your configuration directory (see the `config.toml` location above).
-theme = "default"
+# theme = "television"
+theme = "rose-pine-moon"
 
 # Feature-specific configurations
 # Each feature can have its own configuration section
@@ -139,8 +140,8 @@ ctrl-down = "select_next_history"
 
 # Multi-selection
 # --------------
-tab = "toggle_selection_down"
-backtab = "toggle_selection_up"
+tab = "select_next_entry"
+backtab = "select_prev_entry"
 enter = "confirm_selection"
 
 # Preview panel control
@@ -250,6 +251,7 @@ fallback_channel = "files"
 "git-log" = ["git log", "git show"]
 "docker-images" = ["docker run"]
 "git-repos" = ["nvim", "code", "hx", "git clone"]
+"k8s-contexts" = ["kubectl"]
 
 
 [shell_integration.keybindings]

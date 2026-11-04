@@ -8,12 +8,6 @@ return {
 
     conform.setup({
       formatters = {
-        biome = {
-          require_cwd = true,
-        },
-        ['biome-organize-imports'] = {
-          require_cwd = true,
-        },
         prettier = {
           require_cwd = true,
         },
@@ -23,16 +17,22 @@ return {
         ['golangci-lint'] = {
           require_cwd = true,
         },
+        rubocop = {
+          require_cwd = true,
+          condition = function(_, ctx)
+            return vim.fs.basename(ctx.filename) ~= 'Brewfile'
+          end,
+        },
       },
       formatters_by_ft = {
         lua = { 'stylua' },
-        javascript = { 'oxfmt', 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
-        typescript = { 'oxfmt', 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
-        javascriptreact = { 'oxfmt', 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
-        typescriptreact = { 'oxfmt', 'biome', 'biome-organize-imports', 'prettier', lsp_format = 'last' },
+        javascript = { 'oxfmt', 'prettier', lsp_format = 'last' },
+        typescript = { 'oxfmt', 'prettier', lsp_format = 'last' },
+        javascriptreact = { 'oxfmt', 'prettier', lsp_format = 'last' },
+        typescriptreact = { 'oxfmt', 'prettier', lsp_format = 'last' },
         ruby = { 'rubocop', timeout_ms = 1500 },
         go = { 'golangci-lint', 'gofmt', 'goimports' },
-        json = { 'biome' },
+        json = { 'oxfmt' },
         php = { 'pint' },
         python = { 'ruff_format' },
         rust = { 'rustfmt' },

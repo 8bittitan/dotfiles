@@ -28,7 +28,10 @@ alias develop='git checkout develop';
 alias staging='git checkout staging';
 alias commit='git commit -S';
 alias co='git checkout';
-alias gd="gh dash";
+# alias gd="gh dash";
+
+# Tailspin
+alias log_rails='tspin -f --theme ~/.config/tailspin/rails.toml'
 
 # Random
 alias myip='curl ip.appspot.com';
@@ -46,6 +49,9 @@ alias lara='~/.composer/vendor/bin/laravel';
 
 # Docker
 alias dcu="docker compose up"
+
+# gopass
+alias pass="gopass"
 
 fzf_custom() {
   fzf --preview "([[ -f {} ]] && (bat --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200"

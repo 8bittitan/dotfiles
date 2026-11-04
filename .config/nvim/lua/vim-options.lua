@@ -1,7 +1,7 @@
+-- require('vim._core.ui2').enable()
+
 local o = vim.opt
 local g = vim.g
-
-vim.cmd([[colorscheme ]])
 
 -- Global
 o.backup = false

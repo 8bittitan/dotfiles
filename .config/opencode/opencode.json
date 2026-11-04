@@ -1,22 +1,89 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "share": "manual",
-  "autoupdate": true,
-  "default_agent": "plan",
-  "tools": {
-    "lsp": true
+  "update": "auto",
+  "default_agent": "build",
+  "experimental": {
+    "todo": true,
+    "background_compaction": true,
+    "artifacts": true
   },
-  "provider": {
+  "agents": {
+    "build": {
+      "model": "anthropic/claude-sonnet-5-5#medium"
+    },
+    "plan": {
+      "model": "anthropic/claude-opus-5-5#medium"
+    }
+  },
+  "providers": {
     "openai": {
-      "options": {
+      "settings": {
         "baseURL": "https://us.api.openai.com/v1"
+      }
+    },
+    "enablers": {
+      "name": "Enablers",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "https://inference.api.enablers.algolia.net/v1"
+      },
+      "models": {
+        "xlarge": {
+          "name": "xlarge",
+          "limit": {
+            "context": 400000,
+          }
+        },
+        "large": {
+          "name": "large",
+          "limit": {
+            "context": 400000,
+          }
+        },
+        "medium": {
+          "name": "medium",
+          "limit": {
+            "context": 256000
+          }
+        }
       }
     }
   },
   "mcp": {
-    "docsearch": {
-      "type": "remote",
-      "url": "https://mcp.algolia.com/1/docsearch/mcp"
+    "servers": {
+      "docsearch": {
+        "type": "remote",
+        "url": "https://mcp.algolia.com/1/docsearch/mcp"
+      },
+      "atlassian": {
+        "type": "remote",
+        "url": "https://mcp.atlassian.com/v1/mcp/authv2"
+      },
+      "github": {
+        "type": "remote",
+        "oauth": false,
+        "disabled": true,
+        "url": "https://api.githubcopilot.com/mcp/",
+        "headers": {
+          "Authorization": "Bearer {env:OPENCODE_GITHUB_MCP_TOKEN}"
+        }
+      },
+      "algolia-mcp-portal": {
+        "type": "remote",
+        "url": "http://localhost:8787/mcp",
+        "disabled": true
+      },
+      "chrome-devtools": {
+        "type": "local",
+        "command": [
+          "bunx",
+          "-y",
+          "chrome-devtools-mcp@latest",
+          "--slim",
+          "--headless"
+        ]
+      }
     }
   }
 }

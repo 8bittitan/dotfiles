@@ -3,7 +3,9 @@ return {
   event = 'VeryLazy',
   opts = {
     foldtext = {
-      padding = 1,
+      padding = {
+        width = 1,
+      },
       lineCount = {
         template = ' %d lines',
         hlgroup = 'Comment',

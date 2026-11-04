@@ -3,6 +3,7 @@ return {
   {
     'NvChad/nvim-colorizer.lua',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    lazy = true,
     opts = {},
     config = function()
       local nvchadcolorizer = require('colorizer')

@@ -8,7 +8,7 @@ ansi = true
 frecency = false
 no_sort = true
 output = "{strip_ansi|split: :1..|join: }"
-command = ["sesh list --icons", "sesh list -t --icons", "sesh list -c --icons", "sesh list -z --icons", "fd -H -d 2 -t d -E .Trash . ~"]
+command = "sesh list -t --icons"
 
 [preview]
 command = "sesh preview '{strip_ansi|split: :1..|join: }'"

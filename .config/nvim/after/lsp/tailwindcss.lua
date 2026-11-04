@@ -23,6 +23,11 @@ return {
   settings = {
     tailwindCSS = {
       experimental = experimentalOpts,
+      classFunctions = {
+        'cn',
+        'clsx',
+        'cva',
+      },
     },
   },
 }

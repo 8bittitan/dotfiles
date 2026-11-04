@@ -42,6 +42,10 @@ compinit -C
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(kubectl completion zsh)
 eval "$(fzf --zsh)"
+eval "$(ov --completion zsh)"
+eval "$(tspin --completions zsh)"
+eval "$(wt config shell init zsh)"
+eval "$(gopass completion zsh)"
 
 bindkey -v
 

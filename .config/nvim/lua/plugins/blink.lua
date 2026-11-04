@@ -54,9 +54,7 @@ return {
       signature = { enabled = true },
       sources = {
         default = function()
-          if vim.bo.filetype == 'opencode_ask' then
-            return { 'lsp', 'buffer' }
-          elseif vim.bo.filetype == 'lua' then
+          if vim.bo.filetype == 'lua' then
             return { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' }
           else
             return { 'lsp', 'path', 'snippets', 'buffer' }
@@ -66,7 +64,6 @@ return {
           lsp = {
             name = 'lsp',
             enabled = true,
-            -- kind = 'LSP',
             score_offset = 90,
           },
           path = {
@@ -78,7 +75,6 @@ return {
               label_trailing_slash = true,
               get_cwd = function()
                 return vim.fn.getcwd()
-                -- return vim.fn.expand(('#%d:p:h'):format(context.bufnr))
               end,
               show_hidden_files_by_default = true,
             },
