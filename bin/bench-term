@@ -1,0 +1,29 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+ZSH_BENCH=${ZSH_BENCH:-$HOME/zsh-bench/zsh-bench}
+LOG=${ZSH_BENCH_LOG:-${XDG_CACHE_HOME:-$HOME/.cache}/zsh/benchmarks.log}
+ITERS=${ZSH_BENCH_ITERS:-16}
+
+[[ -x $ZSH_BENCH ]] || { print -u2 "zsh-bench not found at $ZSH_BENCH (git clone https://github.com/romkatv/zsh-bench ~/zsh-bench)"; exit 1 }
+
+cd ~
+out=$("$ZSH_BENCH" --iters "$ITERS") || { print -u2 "$out"; exit 1 }
+
+get() { print -r -- "$out" | sed -n "s/^$1=//p" }
+prompt=$(get first_prompt_lag_ms); cmd1=$(get first_command_lag_ms)
+cmd=$(get command_lag_ms);        input=$(get input_lag_ms)
+
+sha=$(git -C "$HOME/.dotfiles" rev-parse --short HEAD 2>/dev/null || echo -n unknown)
+dirty=$(git -C "$HOME/.dotfiles" diff --quiet 2>/dev/null && echo clean || echo dirty)
+
+mkdir -p "${LOG:h}"
+[[ -f $LOG ]] || print 'ts,sha,state,zsh,cpu,os,first_prompt_ms,first_command_ms,command_ms,input_ms' > "$LOG"
+print "$(date -u +%FT%TZ),$sha,$dirty,$(zsh --version),$(sysctl -n machdep.cpu.brand_string),$(sw_vers -productVersion),$prompt,$cmd1,$cmd,$input" >> "$LOG"
+
+print -r -- "$out"
+print
+print -r -- "logged to $LOG  (last entry deltas vs previous run)"
+if (( $(wc -l < "$LOG") >= 3 )); then
+  tail -2 "$LOG" | awk -F, 'NR==1{p=$7;c=$8;i=$9;s=$10} NR==2{printf "first_prompt: %s -> %s (%+.1f ms)\nfirst_command: %s -> %s (%+.1f ms)\ncommand:       %s -> %s (%+.1f ms)\ninput:         %s -> %s (%+.1f ms)\n", p,$7,$7-p, c,$8,$8-c, i,$9,$9-i, s,$10,$10-s}'
+fi
