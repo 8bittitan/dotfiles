@@ -12,13 +12,6 @@ wk.add({
     desc = '[R]esume last picker search',
   },
   {
-    '<leader>fd',
-    function()
-      Snacks.picker.diagnostics()
-    end,
-    desc = '[F]ind [D]iagnostics',
-  },
-  {
     '<leader>fb',
     function()
       Snacks.picker.buffers()
@@ -135,6 +128,13 @@ wk.add({
   { '<leader>se', '<C-w>=', desc = 'Make splits equal size' },
   { '<leader>sx', '<cmd>close<CR>', desc = 'Close current split' },
 })
+
+if vim.env.REX_SESSION ~= nil and vim.env.REX_SESSION ~= '' then
+  vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left split' })
+  vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to bottom split' })
+  vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to top split' })
+  vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right split' })
+end
 
 wk.add({
   '<leader>cp',

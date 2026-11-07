@@ -37,11 +37,38 @@ return {
         python = { 'ruff_format' },
         rust = { 'rustfmt' },
       },
-      format_on_save = {
-        timeout_ms = 1000,
-        lsp_format = 'never',
-      },
+      format_on_save = function(bufnr)
+        -- Disable with a global or buffer-local variable
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
+
+        return { timeout_ms = 1000, lsp_format = 'never' }
+      end,
       notify_no_formatters = false,
+    })
+
+    vim.api.nvim_create_user_command('FormatDisable', function(args)
+      if args.bang then
+        -- FormatDisable! will disable formatting just for this buffer
+        vim.b.disable_autoformat = true
+        vim.notify('Conform autoformat disabled for current buffer', vim.log.levels.WARN)
+      else
+        vim.g.disable_autoformat = true
+        vim.notify('Conform autoformat disabled', vim.log.levels.WARN)
+      end
+    end, {
+      desc = 'Disable autoformat-on-save',
+      bang = true,
+    })
+
+    vim.api.nvim_create_user_command('FormatEnable', function()
+      vim.b.disable_autoformat = false
+      vim.g.disable_autoformat = false
+
+      vim.notify('Conform autoformat enabled', vim.log.levels.INFO)
+    end, {
+      desc = 'Re-enable autoformat-on-save',
     })
 
     vim.keymap.set({ 'n', 'v' }, '<leader>f', function()
@@ -51,5 +78,21 @@ return {
         timeout_ms = 1000,
       })
     end, { desc = 'Format whole file or range (visual mode)' })
+
+    vim.keymap.set({ 'n', 'v' }, '<leader>tf', function()
+      if vim.b.disable_autoformat or vim.g.disable_autoformat then
+        vim.cmd('FormatEnable')
+      else
+        vim.cmd('FormatDisable')
+      end
+    end, { desc = 'Toggle Conform format_on_save' })
+
+    vim.keymap.set({ 'n', 'v' }, '<leader>tb', function()
+      if vim.b.disable_autoformat then
+        vim.cmd('FormatEnable')
+      else
+        vim.cmd('FormatDisable!')
+      end
+    end, { desc = 'Toggle Conform format_on_save for current buffer' })
   end,
 }
