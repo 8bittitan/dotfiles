@@ -30,7 +30,7 @@ brew bundle
 
 bat cache --build
 
-$(brew --prefix)/opt/fzf/install
+$(mise where fzf)/opt/fzf/install
 
 # Install tpack and tmux plugins
 git clone https://github.com/tmuxpack/tpack ~/.tmux/plugins/tpm
@@ -43,7 +43,7 @@ if [ -d "$yazi_location" ]; then
   ya pkg install
 fi
 
-if [ -d "/opt/homebrew/bin/gh" ]; then
+if [ -d "$(mise where gh)" ]; then
   gh extension install dlvhdr/gh-dash
 fi
 

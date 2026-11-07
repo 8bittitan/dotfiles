@@ -15,13 +15,11 @@ _cached_init() {
 
 zsh-refresh-init() { rm -rf "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/init"; exec zsh }
 
-# eval "$(/opt/homebrew/bin/brew shellenv)"
 export HOMEBREW_PREFIX=/opt/homebrew HOMEBREW_CELLAR=/opt/homebrew/Cellar HOMEBREW_REPOSITORY=/opt/homebrew
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
 
 # Setup mise
-# eval "$(~/.local/bin/mise activate zsh)"
 _cached_init mise mise activate zsh
 
 [[ -f "$ZDOTDIR"/.zstyle ]] && source "$ZDOTDIR"/.zstyle
@@ -52,16 +50,10 @@ else
 fi
 
 # MUST BE BELOW COMPLETIONS
-# vault ships a bash-style dynamic completion; needs bashcompinit + compinit
-# complete -o nospace -C /opt/homebrew/bin/vault vault;
-# source <(kubectl completion zsh)
-# eval "$(fzf --zsh)"
-# eval "$(ov --completion zsh)"
-# eval "$(tspin --completions zsh)"
-# eval "$(wt config shell init zsh)"
-# eval "$(gopass completion zsh)"
+if [ ! -d "$HOMEBREW_PREFIX/bin/vault" ]; then
+  complete -o nospace -C /opt/homebrew/bin/vault vault;
+fi
 
-_cached_init mise      mise     activate zsh
 _cached_init kubectl   kubectl  completion zsh
 _cached_init fzf       fzf      --zsh
 _cached_init ov        ov       --completion zsh
@@ -83,8 +75,6 @@ source ~/.local/share/zsh/fzf-tab/fzf-tab.plugin.zsh
 # Install plugins from brew
 source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1

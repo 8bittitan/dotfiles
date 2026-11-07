@@ -3,18 +3,20 @@
 This repository holds majority of my personal configuration for my MacOS setup. Including but not limited to:
 
 - zsh (shell)
-- [Homebrew](https://brew.sh) (MacOS package manager)
-- [Neovim](https://neovim.io/) (editor)
-- ~~Ghostty (terminal)~~
-    - Currently using Wezterm
-- [Wezterm](https://wezterm.org/) (terminal)
+- Package manager
+    - [mise](https://mise.jdx.dev/) - packages/tools/languages
+    - [Homebrew](https://brew.sh) (minimal)
+- [Neovim](https://neovim.io/)
+- Terminal
+    - [Wezterm](https://wezterm.org/)
+    - [Rex](https://www.superlogical.com/rex/docs/installation) - Currently trialing
 - [Starship](https://starship.rs/) (prompt)
 - [tmux](https://github.com/tmux/tmux) (multiplexer)
-- [mise](https://mise.jdx.dev/) (languages management)
 - [eza](https://eza.rocks/) (better `ls`)
 - [bat](https://github.com/sharkdp/bat) (better `cat`)
-- git
 - [yaak](https://yaak.app/) (API Client)
+- [OpenCode](https://opencode.ai/)
+- (most other tools are listed in [mise config](./.config/mise/config.toml))
 
 ## Quickstart
 
